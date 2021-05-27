@@ -1,0 +1,873 @@
+\documentclass{PackagerQualityN}
+
+\title{Projet Tutoré}
+\author{email.n4n5 }
+\date{May 2020}
+
+
+
+
+% TO DO mettre un un footer avec date a gauche et Latex a droite
+
+
+
+\begin{document}
+
+
+
+\begin{titlepage}%ta page de titre
+\newgeometry{left=1cm,right=1cm,top=2cm,bottom=1.5cm}
+
+
+\includegraphics[width=5cm]{img/logoUniv.png}
+\hfill
+\includegraphics[width=6cm]{img/logoIUT.jpg}
+
+
+\begin{center}
+\Huge
+Module M2109 - Projet tuteuré\\
+Dossier de cadrage
+\\
+\vspace{1cm}
+\imgNofig{img/robot.jpg}{0.8}
+\vspace{1cm}
+\large
+Rédigé par Maxence CHARLOT, Jules SOUBEYRAS et Nans WEBERT\\
+Promotion 2019-2021\\
+\vspace{3.5cm}
+Sujet de projet : Projet Robot - Groupe 2\\
+Tuteurs de projet : M. CAM et Mme ESCAZUT\\
+\vspace{1cm}
+\includegraphics[width=8cm]{img/logoRetT.png}
+\hfill
+\includegraphics[width=8cm]{img/logoThales.png}
+
+\end{center}
+
+
+\end{titlepage}
+
+%==================================SOMMAIRE========================================
+
+\newp       %nouvelle page custom
+\newgeometry{left=2cm,right=2cm,top=2.5cm,bottom=3.5cm}
+\vspace*{\stretch{1}}
+\setcounter{tocdepth}{2}
+\tableofcontents
+\vspace*{\stretch{1}}
+
+
+%==========================================INFO===================================
+\newp
+\vspace*{\stretch{1}} % centrage vertical
+\paragraph{Introduction}
+Ce projet tuteuré est en lien avec l'entreprise Thales Alenia Space.
+Le but de notre projet est d'améliorer un robot que possède l'entreprise Thales.
+Ce robot est déjà à sa deuxième version, cette version a été créée par un étudiant en stage chez Thales.
+Le but de notre projet est de réaliser le robot autonome version 3 en utilisant des composants « typés spatiaux » afin de permettre de réaliser des prototypes facilement et rapidement.
+Nous devons donc proposer des solutions pour les améliorations possibles puis les mettre en place pour créer la troisième version du robot.
+
+
+\paragraph{Plus de précisions}
+
+Nous avons à notre disposition tous les logiciels et documents (datasheet) nécessaires au pilotage de la caméra Basler Time of Flight ainsi que toutes les documentations sur le robot autonome version 2. Lors de la présentation de projet à Madame ESCAZUT et Monsieur CAM nous devrons exposer le robot autonome version 3 embarquant la caméra Basler Time of Flight et/ou Mesa SR4500 et la caméra FLIR BlackFly et le mimu DMU30 (des composants utilisés normalement dans le spatial).
+
+
+Le robot version 3 devra être capable d'utiliser 2 Raspberry pour avoir une puissance de calcul plus élevée, permettant un traitement vidéo plus efficace. Cela montrera qu'il est possible de séparer le programme exécuté en plusieurs calculateurs pour augmenter les performances et mieux comprendre les impacts d’une répartition sur 2 calculateurs.
+
+
+
+\paragraph{Informations sur le Projet}
+
+Notre première partie de projet tuteuré consiste à déterminer des solutions que l’on choisira avec notre tuteur à la fin du 2ème semestre.
+Nous devons donc faire un compte rendu de toutes les possibilités d’améliorations possibles et déterminer lesquelles seront les meilleures pour pouvoir les mettre en place lors des semestres 3 et 4.
+\vspace*{\stretch{1}} % centrage vertical
+
+%==================================TENSION==========================================
+
+\newp       %nouvelle page custom
+\paragraph{}
+\textit{Dans l’accomplissement de notre projet tuteuré, le premier besoin auquel nous avons été confronté a été l'alimentation des équipements présents. Les précédents étudiants ayant travaillé sur ce robot avaient brillamment résolu cette question.
+Or, l’intégration de nouveaux équipements remet en question le fonctionnement du robot.}
+
+
+
+
+\section{La résolution du problème de tension}
+
+
+
+\subsection{Exposé du problème}
+Notre robot est constitué de capteurs qui ont besoin d’être alimentés en électricité. Mais malheureusement, le voltage des différents capteurs est différent, soit 24 volts, soit 12 volts, soit 5 volts.
+
+Nous devons donc partir de l’élément primordial qui fournit l’énergie, la batterie, pour ensuite changer le voltage. Notre batterie est composée de 8 piles qui fournissent un total de 32 volts, chaque pile délivre 4 volts.
+Nous avons différentes solutions qui s’offrent à nous pour abaisser la tension.
+
+Nous allons voir, dans un premier temps, une solution assez rudimentaire qui consiste à utiliser des simples résistances pour faire baisser le voltage.
+Nous allons voir ensuite qu'un autre circuit est possible et bien plus efficace en utilisant des composants moins basiques : les régulateurs de tension.
+Enfin, nous verrons la dernière solution : le buck Converter.
+
+\subsection{Solution avec le pont diviseur de tension}
+Les résistances sont des composants électriques permettant d’abaisser la tension.
+Mais un problème se pose : comment réguler précisément la tension ?
+
+Fort heureusement pour nous, un système ingénieux nommé ‘Pont diviseur de tension’ nous permet d’atteindre une tension de référence assez facilement. De plus, c'est aisément calculable et assez facile à mettre en place.
+
+Un pont diviseur de tension ressemble à ceci :
+
+\img{img/pontTension1.png}{Schéma du pont diviseur de tension}{0.5}{SchemaPontDiviseurDeTension1}
+
+\subsubsection{Circuit entier et calcul}
+
+La formule du pont diviseur de tension est la suivante : \[Vs=\frac{R2}{R2+R1}*Ve\]
+Il y a donc plusieurs valeurs possibles pour trouver le rapport suivant : \[\frac{Vs}{Ve}=\frac{R2}{R2+R1}\]
+Dans la Figure 2, nous avons pris 4 valeurs de résistances différentes pour atteindre au final 5 volts en passant par 24 volts et 12 volts comme souhaité.
+Concernant le circuit, c'est très simple, il s'agit de trois diviseurs de tension à la suite. On préfère les mettre à la suite car passer de 32 volts à 5 volts générera trop de chaleur.
+\\\\
+Voici le circuit final avec tous les diviseurs de tension :
+\img{img/PontDiviseur.png}{Schéma du pont diviseur de tension}{0.5}{SchemaPontDiviseurDeTension2}%une
+
+
+
+\newp
+Concernant les résistances, des résistances banales ne suffisent pas, car elles ne peuvent pas supporter beaucoup de courant, il faut des résistances bobinées, qui sont des résistances spéciales permettant de laisser passer plus de courant.
+\img{img/resistBob.jpg}{Image d'une résistance bobinée}{0.4}{imgResBob}
+
+
+
+
+\paragraph{}
+\textit{Le pont diviseur de tension produit beaucoup de chaleur (loi d'Ohm), le courant est converti en chaleur. Selon les valeurs des résistances choisies, on obtient par exemple une puissance de 10,32 Watts.
+De plus, nous  avons plusieurs résistances, donc beaucoup de sources de chaleur.
+Nous avons donc dû penser à une autre solution qui répond mieux à nos besoins.}
+
+
+
+
+
+
+
+\newpage
+\subsection{Solution par régulateur de tension}
+Nous nous sommes donc intéressés au régulateur de tension. C'est un petit composant qui est très utile. Il gère automatiquement la tension de sortie en fonction de la tension d'entrée, peu importe la tension d'entrée.
+Par exemple, si on choisit un LM7805, d'après les deux derniers chiffres, ce régulateur abaissera la tension jusqu'à 5 volts. Le point négatif de ce composant est la quantité de chaleur qu'il produit pour abaisser la tension.
+\subsubsection{Choix du composant}
+Comme nous l'avons vu dans le paragraphe précédent, la tension de sortie est indiquée par les deux derniers chiffres de la référence du composant. Nous allons donc prendre un LM7824 pour abaisser la tension à 24 volts puis un LM7812 pour abaisser à 12 volts puis enfin un LM7805 pour abaisser la tension à 5 Volts.
+
+Bien que le régulateur de tension soit assez efficace, il est conseillé d'ajouter des condensateurs à l'entrée et en sortie du régulateur pour éviter les perturbations du signal.
+\img{img/LM7805.jpg}{Image du LM7805}{0.4}{imgLM7805}
+
+\subsubsection{Circuit complet}
+Voici donc le circuit final avec les régulateurs en série pour permettre une meilleure rentabilité, car ils chaufferont beaucoup moins.
+
+On peut remarquer qu'on a ajouté une diode au début du circuit, tout simplement pour éviter des problèmes avec les batteries en cas de mauvais branchement des composants. On pourrait aussi en rajouter aux sorties 24 volts, 12 volts et 5 volts, pour protéger les régulateurs, mais normalement, il n'y aura pas d'erreur de manipulation aussi irréfléchie et les régulateurs sont des pièces qui coûtent peu cher.
+\img{img/Regul.png}{Schéma du circuit complet avec les régulateurs \\ Les condensateurs sont à 100 nF}{0.5}{CircuitRegulateur}
+
+\newp
+\subsubsection{Problème du régulateur de tension}
+Comme nous l'avons dit précédemment, les régulateurs de tension ont la particularité de chauffer beaucoup, et très rapidement (moins que le pont diviseur de tension). Il faudrait donc utiliser des dissipateurs de chaleur.
+
+\img{img/dissip.jpg}{Image d'un dissipateur de chaleur}{0.25}{dissipateur}
+
+Le dissipateur de chaleur est une pièce en métal qui permet d'augmenter la surface avec l'air et donc d'augmenter la dissipation de la chaleur. 
+
+\paragraph{}
+\textit{Le problème de chaleur étant encore présent, mais nettement diminué, une nouvelle solution nous vint à l'esprit : le Buck converter.}
+
+
+
+
+
+
+
+
+\newpage
+\subsection{Solution par Buck Converter}
+\subsubsection{Utilisation du Buck Converter}
+Le Buck Converter permet entre autres d'obtenir une tension réglable mais toujours inférieure à celle présente à l'entrée. Il a donc un rôle de variateur de tension continue. C'est donc précisément notre cas. On veut des tensions de 24 volts, 12 volts et 5 volts en partant de 32 volts en entrée.
+
+\subsubsection{Avantages}
+Cette solution a donc pour avantage par rapport au régulateur de tension et au pont diviseur de tension de n'émettre presque pas de chaleur grâce à l’inducteur car un inducteur idéal ne dissipe pas l’énergie sous forme de chaleur.
+\paragraph{}
+L'inducteur est un organe électrotechnique, généralement un électroaimant (les aimants permanents étant généralement réservés aux dispositifs de faible puissance) ayant comme fonction d'induire un champ électromagnétique dans un induit servant à produire de l'énergie électrique (alternateur) ou une force (moteur) ou à chauffer des conducteurs comme des métaux de toutes sortes.
+
+\subsubsection{Circuit de base d'un Buck Converter}
+Voici le circuit de base d'un Buck converter en théorique.
+\img{img/buck_converter.png}{Schéma du circuit type du Buck Converter}{0.9}{CircuitBuck}
+\newp
+\subsubsection{Buck Converter réel}
+Le composant réel dispose de plus d'éléments que la version théorique (ajout d'un régulateur de chaleur et de condensateur pour "purifier" le signal) mais le principe reste strictement identique.
+\img{img/buckR.jpg}{Image du composant réel}{0.4}{CircuitBuckR}
+
+
+\paragraph{}
+\textit{Finalement, nous avons décidé de ne pas utiliser la solution du pont diviseur de tension, mais de prendre l’alternative qui délivre moins de chaleur, tout en restant une solution au prix abordable.
+Le Buck Converter est la solution la plus optimale que nous avons trouvée.
+Nous mettrons donc cette solution en place car elle permettra le bon fonctionnement du robot, avec peu de rejet de chaleur (ce qui est le principal problème lors de changements importants de tension), 
+Ainsi, chaque équipement se verra délivrer sa tension correspondante.}
+
+\clearpage
+%==================================CAPTEURS==========================================
+
+\newp
+\section{ L’analyse des capteurs}
+\subsection{Exposé du problème}
+Notre tuteur M.CAM souhaite que nous intégrions des capteurs spatiaux pour pouvoir faire des simulations à l'avenir. Il nous a donc présenté 3 capteurs : 
+
+- la caméra ToF (Time Of Flight), qui calcule la vitesse de la lumière pour construire une image
+
+- le capteur FlirBlackFLY qui est un autre type de caméra qui combine plusieurs capteurs propriétaires permettant d'avoir des images de haute qualité
+
+- le capteur DMU30 qui est grossièrement un gyroscope/accéléromètre très précis
+
+\subsection{Solution pour le capteur caméra ToF - Time Of Flight}
+Concernant le capteur caméra ToF Time Of Flight, l’intégration est possible, l’étudiant l’avait déjà faite. Cependant, des questions se sont posées sur le traitement des images reçues. Est-ce que l’étudiant les traitait sur les raspberrys ou sur un ordinateur après l'utilisation d’un Raspberry ?
+Nous pourrions donc soit reprendre son travail et le continuer ou soit faire le traitement des images sur le Raspberry directement.
+\img{img/tof.jpg}{Image du capteur TimeOfFlight}{0.5}{tof}
+\newp %mise en page
+\subsection{Solution pour le capteur caméra FlirBlackFly}
+Concernant le capteur FlirBlackFly, un logiciel sous Linux est disponible, donc son intégration est techniquement possible car Raspbian est compatible avec Linux.
+Il faut alors comprendre le logiciel et le scripter pour obtenir des résultats.
+\\
+\\
+Détails : Logiciel pour la caméra \citep{lienLogicielCamera} 
+\img{img/flirblack.jpg}{Image du capteur caméra FlirBlackFly}{0.3}{blackFly}
+\newp %mise en page
+\subsection{Solution pour le capteur - DMU30}
+Concernant le capteur DMU30, l’intégration sera difficile voire impossible. En effet, après étude en profondeur des DataSheets, on remarque plusieurs défauts.
+\img{img/DMU30.png}{Image du capteur DMU30}{1.2}{DMU30}
+\subsubsection{Problème de conversion de prise}
+Le capteur nécessite un convertisseur car il n’utilise pas une prise RJ45 ou USB. Or, ce convertisseur est gros et grand, il prendrait beaucoup de place sur le raspberry.
+\subsubsection{Problème de logiciel}
+Le capteur fonctionne avec un logiciel sous Windows or, le Raspberry fonctionne sous Raspbian. Raspbian n’est pas compatible Windows, l’utilisation de ce logiciel ne sera donc pas possible.
+
+Pour utiliser ce capteur, deux solutions :
+
+- soit trouver et utiliser un émulateur windows sur RaspBian, cela peut quand même impliquer des problèmes
+
+- soit il faudrait “bidouiller”, c’est-à-dire, le faire fonctionner sous un ordinateur windows en analysant les flux électriques qu’il envoie et reçoit du capteur. Puis reproduire ces signaux électriques avec le Raspberry.
+Mais cela est possiblement très dangereux pour le capteur.
+
+
+\paragraph{}
+\textit{L'intégration de deux capteurs devrait être possible, mais malheureusement le capteur DMU30 pose beaucoup de contraintes matérielles et logicielles. Son intégration sera très complexe, voire impossible. L'intégration des capteurs se fera par étapes : branchements, installation logiciel, utilisation du logiciel avec le capteur (pour voir s'il marche correctement). Après ces étapes d'installation, nous pourrons donc intégrer le capteur dans ROS, et puis le scripter, pour que le capteur fasse une mesure définie avec une seule commande. Le scriptage dépendra du logiciel, comment il marche etc...}
+%TO DO
+
+\clearpage
+
+%==================================CHASSIS======================================
+
+\newp
+\section{La refonte du Châssis}
+\subsection{Exposé du problème}
+L'un des objectifs principaux de notre projet tuteuré est de pouvoir associer tous les équipements (la caméra Basler Timeof Flight et/ou Mesa SR4500 et la caméra FLIR BlackFly et le mimu DMU30-01) sur le même robot. Pour cela, un problème évident se pose : la question de la place sur le châssis.
+En effet, les équipements demandés sont assez volumineux et nécessitent donc une amélioration du châssis. 
+
+
+\subsection{Refonte du système de déplacement}
+La nouvelle version du robot que nous nous apprêtons à concevoir sera bien plus lourde que l'ancienne, en effet, elle transportera plus de composants notamment une caméra, des raspberrys ainsi que plusieurs bucks converters et un potentiel moteur supplémentaire.
+
+
+Deux solutions s'offrent à nous pour la création de cette nouvelle version du robot: l'utilisation de roues ou de chenilles. Cependant, lors d'une réunion avec l'un de nos tuteurs de projet, Monsieur CAM a exprimé son désir de privilégier la maniabilité du robot plutôt que sa vitesse pour avoir des conditions plus proches du réel (espace).
+
+
+\subsubsection{Roues}
+Les roues sont moins confortables au niveau de la flottaison mais consomment moins, elles peuvent porter un peu moins de poids mais sont idéales sur un sol plat. De plus, elles sont idéales s'il faut une vitesse plus élevée.
+
+\subsubsection{Chenilles}
+Les chenilles quant à elles offrent une flottaison inégalable mais ont une consommation légèrement plus élevée de carburant (8\%). Les chenilles permettent une charge plus élevée mais en revanche, le mécanisme d’entraînement des chenilles occasionne plus de résistance, de sorte qu’elles fournissent moins de puissance à des vitesses élevées
+\newpage% pour la mise en page, on la fera en dernier, a suppr si jamais 
+Tout comme les roues, les chenilles ont besoin, chacune, d'un moteur, et elles ont également besoin d'un roulement à l'arrière pour tendre la chenille. En effet, comme on peut le voir dans la figure 12, il y a une roue "folle" qui sert à tendre la chenille. On pourrait donc mettre en place 3 types de chenilles possibles :
+\img{img/chenil0.png}{Premier type de chenille}{1.8}{chenille1}
+
+\img{img/chenil1.png}{Second type de chenille}{1.8}{chenille2}
+
+\img{img/chenil2.png}{Troisième type de chenille}{1.9}{chenille3}
+
+
+\textit{Images provenant de la "Modifications au règlement (UE) no 167/2013 relatif à la réception et à la surveillance du marché des véhicules agricoles et forestiers"}
+\\\\
+Le troisième type de chenille serait utile pour le franchissement d'obstacle, or ce n'est pas le cas dans notre projet. Le robot doit seulement réaliser une simulation spatiale, au sol. Donc il ne rencontrera pas d'obstacle comme dans l'espace où il y a des collisions (et destructions).
+
+\subsubsection{Moteur}
+- Les moteurs à balais ont certains avantages :
+
+Ils sont simples à contrôler, leur couple à bas régime est très bon et ils sont peu coûteux.
+\paragraph{}
+- Les moteurs brushless comblent certains points faibles des moteurs à balais, notamment la présence de balais. Mais ces moteurs présentent également d’autres avantages :
+Ils peuvent opérer à des vitesses plus importantes  (jusqu’à 100 000 tours par minute contre 20 000 pour les moteurs à balais).
+
+Leur durée de vie est plus longue (au-delà de 10 000 heures de service)
+Ils sont plus fiables et plus efficaces.
+Il n’y a pas de pièce d’usure à part les roulements, ce qui réduit les opérations de maintenance.
+Cependant, ils servent habituellement comme moteur pour les scies, les ventilateurs... ils ont donc généralement besoin d'un réducteur de vitesse ( donc cela est plus cher)
+\img{img/moteur-brushless.jpg}{Exemple de Moteur Brushless}{0.3}{MoteurBrusless}
+\subsection{Nouveau châssis}
+
+
+La création d'un châssis à distance est très compliquée car cela pose plusieurs problèmes : tout d'abord, le confinement créé par la COVID-19 ne nous a pas permis d'accéder aux ordinateurs de l'IUT. Nous voulions le faire sur les ordinateurs de l'IUT car ils possèdent un logiciel et nous aurions dû nous procurer une licence pour le logiciel utilisé. De plus, nous avions peu de connaissances sur le robot en terme d'architecture (les dimensions) mais aussi sur le poids des composants même avec les documents fournis. Cela ne permet pas une visualisation réelle de ce que cela donnera et enfin nous n'avons pas pu approcher et voir le robot à cause du confinement, ce qui complique la modélisation car nous ne pouvons avoir aucune idée des proportions réelles du robot.
+
+\paragraph{}
+\textit{Nous opterons donc finalement pour les chenilles car la maniabilité est plus importante que la vitesse dans ce projet. Avec des chenilles, le robot pourra faire, par exemple, un tour complet sur lui-même sans trop d'efforts et sans utiliser trop de place. Le type de chenille sera donc des chenilles "plates" avec ou sans galets de chenille (selon le matériel).}
+
+
+
+
+
+%==================================RASPBERRY======================================
+\newp
+\section{L’ajout de deux Raspberrys}
+\subsection{Exposé du problème}
+Notre tuteur M.CAM, voulait augmenter la capacité de calculs du Raspberry Pi en mettant en parallèle la puissance de calcul de deux Raspberrys Pi. Mais lier deux périphériques physiques est assez compliqué. Une solution existe, qui correspond un peu à notre problème : la mise en cluster.
+
+\subsection{Solution par cluster}
+La mise en parallèle totalement invisible est dure, mais on peut le mettre en cluster
+(Un cluster est un rassemblement de machines avec une machine maître et des machines esclaves. Dans ce genre de configuration, le maître contrôle l’esclave, et peut lui donner des tâches à faire.)
+Mais mettre les Raspberrys en cluster ne permet pas vraiment de paralléliser les Raspberrys.
+\img{img/cluster.jpg}{Exemple de 4 Raspberrys en Cluster}{0.075}{ImgExempleCluster}
+
+Une solution serait donc de mettre en cluster les Raspberrys pour une communication rapide entre les deux. Du côté hardware, on pourrait donc brancher un capteur sur un Raspberry et un autre capteur sur l’autre Raspberry.
+
+Une autre possibilité serait de mettre un Raspberry 'maître' qui contrôle la direction et la gestion du robot, et l'autre robot qui est relié à un capteur (par exemple, une caméra qui nécessite pas mal de capacité de calculs).
+\newp
+\subsection{Contraintes}
+L'utilisation d'un autre Raspberry créée de nouvelles contraintes :
+
+- Utilisation de câbles en plus, des ports Ethernet à prévoir
+
+- Un Raspberry implique un certain poids, certes assez faible, mais présent
+
+- Un Rasberry supplémentaire implique aussi une consommation électrique supérieure
+\\
+Voici un tutoriel expliquant la mise en cluster de deux Raspberrys \citep{videoGraven}
+\\
+Voici les commandes pour la mise en cluster de Raspberry \citep{commandeCluster}
+\\\\\\
+\paragraph{}
+\textit{La mise en parallèle totale est possible mais la mise en cluster est possible et facile à mettre en place. Nous proposons donc cette solution pour répondre à ce problème}
+
+\newp       %nouvelle page custom
+
+\section{Mise en place lors des 3ème et 4 ème semestres}
+
+\subsection{Achat des pièces}
+Voici des liens d'achat possibles pour les pièces :
+
+- Résistances bobinées \citep{lienResistance}
+
+- Régulateur de tension \citep{lienRegulateur}
+
+- Buck Converter \citep{buck}
+
+- Roue \citep{lienRoue}
+
+- Moteur \citep{lienMoteur}
+
+Ces liens sont surtout là pour donner un ordre de grandeur du prix des pièces.
+
+\subsection{Diagramme de Gantt}
+\textit{Notre projet dépend de nombreux facteurs extérieurs étant donné qu'il n'est pas dirigé par l'IUT, ainsi différentes tâches ont une durée inconnue (voire ne seront pas réalisables en fonction de la situation future). Un diagramme en temps fixe serait donc dénué de sens. Cependant, pour correspondre à ce critère, nous avons fait quelques estimations du temps nécessaire à la réalisation des tâches}
+
+\paragraph{}
+Le début de cette deuxième année à l'IUT et donc la continuation du projet, commencera par une reprise en main des notions abordées en première année. Cela prendra environ une semaine de pouvoir se replonger dans le vif du sujet.
+\paragraph{}
+Nous serons ensuite aptes à régler le problème de tension, après commande des pièces adéquates.
+Toutes les durées que nous allons donner sont approximative car nous ne savons pas si nous allons avoir accès au robot, et si oui, combien de temps par semaine et où (au DUT ? Chez THALES ?).
+
+Le temps estimé pour régler le problème de tension est très court, environ 3 semaines, il s'agit d'un simple montage électrique et d'une réflexion déjà effectuée au préalable, mais il faut avoir commandé les pièces, ce qui peut durer plus ou moins longtemps.
+\paragraph{}
+Le temps estimé pour régler le problème des capteurs dépend également de nos accès aux capteurs. Au vu de la difficulté, cela nous prendra 2 mois approximativement pour tout mettre en place. Nous devons tout d'abord faire les branchements des caméras, puis les utiliser avec leurs logiciels et enfin les relier à ROS (le système qui gère le robot).
+Nous pourrons enfin les scripter pour qu'ils puissent effectuer des mesures prédéfinies.
+\paragraph{}
+Le problème du châssis prendra beaucoup de temps aussi car il faut se procurer un logiciel, et avoir une licence pour l'utiliser (chose qu'on peut peut-être avoir facilement en tant qu'étudiant). Puis, il faut reprendre fichier 3D du châssis déjà existant sur le logiciel et en créer un nouveau. Il faudra alors déterminer quelles sont les pièces et le câblage nécessaires, puis enfin, on pourra le faire imprimer en 3D. On peut estimer le temps à 3 mois.
+\paragraph{}
+En ce qui concerne les roues et les moteurs ainsi que les chenilles, il s'agit surtout de passer la commande. Mais il faudra également se renseigner si des galets de chenilles sont plus efficaces ou non.
+
+Pour les raspberrys, il nous en faudra 2 pour les monter en cluster. D'après le tutoriel, cela devrait être assez simple de les mettre en cluster. Le challenge sera l'intégration de ROS entre les 2 raspberrys. Cela prendra 2 mois.
+\paragraph{}
+Évidemment, ce projet se soldera forcément par quelques ajustements tant au niveau du code qu'au niveau du matériel. On peut même supposer que c'est ce qui prendra le plus de temps. 
+
+
+
+
+
+\newp
+\appendix
+\section{Annexe - Compte rendu de la réunion du 1 Avril 2020}
+La première réunion que nous avons faite a eu lieu le premier avril 2020. Elle s'est réalisé avec tout le groupe alternant, ainsi que Mme ESCAZUT et M.CAM.
+
+
+Lors de cette première réunion M.CAM nous a expliqué ce qu'il y avait à faire sur les 2 projets et
+les documents qu'il nous fournirait.
+
+
+Pour le projet du robot, il nous a dit qu'il nous enverrait des fichiers à la fin de la réunion tel que la
+documentation sur les capteurs (la caméra RoS, la caméra ToF) mais aussi le wiki du stagiaire qui a
+fait la 2ème version du robot (un document de 70 pages pour l’installation du robot).
+Il a aussi évoqué la réalisation d'un cahier des charges et nous a aussi refais part des besoins (ils
+nous les avaient déjà dits lors de la présentation faite à l'IUT).
+
+
+Il en a aussi profité pour ré-expliqué le robot v2 : il était composé d'un raspberry Pi qui s'occupait
+de la caméra et aussi de la direction.
+
+
+Dans la troisième version du robot, il attend de nous que les raspberrys contrôlent une caméra
+comme la ToF ou la MESA, il attend aussi de nous de réaliser un système électrique afin de régler
+les contraintes des tensions. Il veut aussi que l'on travaille sur le châssis (les roues et le moteur).
+Enfin, il souhaiterait une interface logiciel afin de contrôler les différents équipements.
+
+\newp
+\section{Annexe - Compte rendu de la réunion du 15 Avril 2020}
+Lors de la deuxième réunion que nous avons programmée pour le 15 Avril avec mon groupe, nous
+n'étions que nous 3 ainsi que M.CAM.
+
+Pendant cette réunion, nous lui avons confirmé la bonne réception des documents qu'il nous avait envoyés.
+Il nous a ensuite expliqué que le projet était composé de 2 parties distinctes.
+La première partie se déroulant lors du 2ème semestre ne nécessite pas de matériel mais est plutôt
+une exposition du projet, c'est-à-dire un dossier de cadrage munis d'un plan et d'un compte rendu.
+La deuxième partie se déroule pendant le 3ème et le 4ème semestre, cette partie commence par le
+choix du groupe qui a le plus travailler, mais aussi le plus intéressant.
+
+
+Puis la phase de réalisation du projet : en passant par les commandes des différentes pièces,
+l'assemblage, les tests, mais aussi la résolution des potentiels futurs problèmes que l'on rencontreras.
+Nous lui avons ensuite fait un retour sur notre avancement pour le projet.
+
+
+Entre les 2 semaines qui se sont écoulés depuis la dernière réunion nous avons beaucoup avancés :
+nous avons tout d'abord organisé une réunion de groupe afin de se répartir les tâches de travail.
+Suite à cette réunion, nous en sommes venu à la conclusion que travailler à plusieurs pourrait être
+plus efficace étant donné que M.CAM nous avait clairement dit qu'il préfère un robot opérationnel
+avec peu d'options qu'un robot défaillant avec toutes les "options".
+
+
+Nous avons donc décidé de travailler en groupe point par point sur chaque aspect du robot.
+Lors de cet appel, nous lui avons aussi confirmé que nous avions bien pris connaissance des
+documentations qu'il nous avait fournis et nous lui avons posé quelques questions : si les anciens
+étudiants ayant travaillé sur ce robot avaient eu accès au robot car le travail nous paraissait
+incroyable ou s'il avait était fait sans avoir le robot.
+
+
+On a ensuite exposé notre plan d'action à court terme: commencé par l'ordre évoqué dans la
+documentation, puis se poser certaines questions telles que "comment embarquer la caméra ToF? "
+ou bien plus simplement " quelle caméra allons nous embarquer ?", nous sommes ensuite passer à
+l'étape de recherche de solutions face aux contraintes de tension qui nous étaient exposées. Puis
+finalement nous avons abordé le sujet des applications dont nous allons avoir besoin pour les
+raspberrys ainsi que de savoir comment nous allons répartir les tâches sur les deux raspberrys.
+Concernant les problèmes de tension, nous avons posé la question concernant l'achat de matériel, si
+on devait passer par lui, par l'IUT ou bien les deux, il nous a donc expliqué que si le matériel n'était
+pas à disposition, il fallait préparer les potentielles commandes même si nous n'en avions pas besoin
+tout de suite, étant donné que nous en sommes qu'à la partie "théorique".
+
+
+Il nous proposa de se répartir certaines tâches en fonction de nos compétences, certains pourraient
+se voir assigner la partie sur la puissance, certains plutôt sur la mécanique et d'autres sur les
+raspberrys.
+
+
+En fin de réunion, il insista sur l'importance de savoir quelles pièces seraient nécessaire à
+commander et de les mettre dans notre rapport.
+\newp
+\section{Annexe - Compte rendu de la réunion du 7 Mai 2020}
+La troisième réunion s'est déroulée le 7 mai seulement avec M.CAM.
+
+Comme lors de la deuxième réunion, nous avons fait un point sur notre avancement dans le projet.
+Nous lui avons exposé nos recherches notamment sur les problèmes de tension : au début, nous
+avions pensé à un pont diviseur de tension, mais que ce n'était pas optimal, car cela produisait trop
+de chaleur et nous avons donc cherchés et trouvés une alternative qui est le régulateur de tension.
+Nous lui avons donc fait part de certaines idées qui nous semblaient intéressantes notamment que le robot puisse supporter les nouvelles charges des nouveaux équipements.
+
+
+Nous avons ensuite parlé du déplacement du robot : changer sa taille et le matériau des roues, car
+elles n'auraient pas été assez résistantes, mais il nous a demandés si les chenilles n'étaient pas plus
+intéressantes dans ce cas-là et cela nous a permis d'étudier cette solution.
+Nous avons proposé d'augmenter la puissance des moteurs avec deux possibles pistes pour les
+moteurs : les moteurs à balais et les moteurs brushless (dans notre cas, les moteurs à balais sont bien
+plus intéressants).
+
+
+Enfin, nous avons parlé du châssis pour qu’il puisse supporter une plus lourde charge, il nous a
+donc confirmé que THALES possède des imprimantes 3D qu’on pourrait utiliser.
+Nous avons ensuite discuté des possibles solutions pour les raspberryPi : afin de doubler leur
+puissance de calcul. On a donc pu lui proposer de les monter en cluster mais cela ne double pas
+vraiment la puissance de calcul mais facilite plutôt la communication entre les deux appareils,
+comme cela, chaque raspberry peut avoir son capteur et sa fonction.
+
+
+En fin de réunion nous avons parlé du capteur DMU et de son kit (contenant les éléments pour le
+capteur) afin d’avoir plus d’information pour l'intégrer dans le robot.
+\newp
+\section{Annexe - Compte rendu de la réunion du 11 Juin 2020}
+La dernière réunion que nous avons eue s'est déroulée le 11 juin.
+
+
+Pendant cette réunion nous, avons surtout discuté à propos de la date de remise du compte-rendu,
+puis on lui as expliqué tout ce qu'on avait fait depuis et que nous avions bientôt fini.
+
+
+Cette réunion avait pour principal but de le rassurer vis-à-vis de notre avancée sur le projet. En fin
+de réunion, nous lui avons envoyé le carnet de bord que nous avions réalisé dans le module de Mme
+Bouché afin qu'il puisse le consulter.
+%=====================================================================================================
+\newp
+\section{Annexe - Journal de Bord}
+
+\textbf{SEMAINE 14}
+
+• Titre : Début du projet
+\\
+Mercredi 1er : appel avec M.CAM avec tout le groupe 3
+
+• Mission : Prendre connaissance des Documents reçues par monsieur CAM Philippe Soit (environ 300 pages de documents techniques en anglais sur les composants / environ 50 pages de dossier sur les versions précédentes effectué par les anciens étudiants).
+
+• Contexte : insérer de nouveaux composants au robot v2 et augmenter sa puissance de calcul. Donc nécessite une connaissance de base du robot
+
+• Personne concerné : Tous
+
+• Travail réalisé : Appel téléphonique avec M.CAM pour définir les groupes et aussi le travail à fournir. Il nous indique aussi qu’il faut fixer des rendez-vous toutes les deux semaines pour l'avancement du projet.
+
+• Détails :
+
+-          Lecture des parties essentielles des documents techniques
+
+-          Identification des possibles futurs contrainte pour atteindre l’objectif
+
+-          mise en  commun des possibles idées pour résoudre les contraintes et objectifs: 
+
+	résoudre le problème d'alimentation électrique du robot (avoir les bonnes tensions au 
+	bon endroit).
+	
+la refonte du châssis du robot pour pouvoir mettre les équipements dessus.
+
+la prise en charge des capteurs par le robot
+
+ 	augmenter la capacité de calcul du robot en mettant 2 raspberry PI.
+	trouver un moteur qui puisse supporter le poids des équipements
+	changer les roues car les roues d’origines en plastique du robot sont trop fragiles
+
+
+• Difficultés :
+
+- le temps de lecture (+ le fait que les documents sont en anglais)
+
+- la recherche des idées
+
+• Degré d’achèvement : 20\% (sera complété tout au long de notre analyse). Cependant, nous pouvons toujours améliorer les systèmes et tomber sur de nouvelles contraintes
+\newp
+\textbf{SEMAINE 15}
+
+• Titre : Problème de tension
+
+• Mission : Trouver un moyen de leur fournir la tension nécessaire à chaque équipement sans les dégrader 
+
+• Contexte : Plusieurs équipements demandent des tensions différentes
+
+• Personne concerné : Jules Soubeyras (partie pont diviseur de tension) et Maxence Charlot (partie régulateur de chaleur)
+
+• Travail réalisé :
+
+ les différentes idées de solution :
+ 
+-pont diviseur de tension
+-> inconvénients chaleur ( très très forte chaleur)
+	Le pont diviseur de tension produit beaucoup trop de chaleur ce ne serait pas optimal dans notre système étant donné que certaines des caméras ne supportent pas la chaleur.
+	
+-régulateur de tension et dissipateur de chaleur
+
+ -> avantages et inconvénients : si la batterie à un problème tout le robot ne fonctionne plus et chaleur, cependant peu coûteux, facile à mettre en oeuvre et le problème de chaleur est soluble grâce un dissipateur de chaleur si la température devient trop élevée
+ 
+-faire plusieurs batteries alimentant chaque équipement
+
+-> avantages et inconvénients : si l'une des batteries plantent le robot fonctionne mais pas dans son entièreté (manque un équipement), coût élevé, chaleur, plusieurs batteries, prise de place
+Proposer les solutions à Monsieur CAM pour qu’il puisse choisir en fonction de son besoin
+
+
+• Difficultés : 
+recherche
+analyse des avantages et inconvénients pour faire une prise de décision
+calculs
+
+• Degré d’achèvement : 70\% (améliorations possibles)
+ 
+• Conclusion de la mission : pour l’instant le régulateur de tension semble la solution la plus adéquate et validée par monsieur CAM.
+\\\\
+\textbf{SEMAINE 16}
+
+Vacances
+
+• Titre : Recherche d’informations sur les capteurs
+
+• Mercredi 15 : appel avec M.CAM
+
+• Mission : se renseigner sur les capteurs (suite)
+
+• Contexte : la première lecture nous a permis de s’établir une première liste des contraintes de base, une lecture plus approfondie est donc nécessaire pour pouvoir installer les capteurs.
+
+Personnes concernées : Tous
+
+• Travail réalisé :
+-lecture des documents et datasheets
+-recherche
+
+• Difficultés :
+compression des documents et analyse des datasheets
+difficultés car méconnaissance du langage de programmation utilisé sur certains équipements
+
+• Degré d’achèvement :40\% (sera complété tout au long de notre analyse)
+Cependant, nous pouvons toujours améliorer les systèmes et tomber sur de nouvelles contraintes
+\\\\
+\newp
+\textbf{SEMAINE 17}
+
+• Vacances
+
+• Personnes concernés : Tous
+
+\textbf{SEMAINE 18} 
+
+• Titre : travail sur l’intégration des capteurs
+
+• Mission : Intégrer de nouveaux capteurs au robot
+
+• Contexte : Le robot doit être capable de gérer plusieurs nouveaux capteurs.
+
+• Personne concerné : Nans
+
+• Travail réalisé :
+Concernant le capteur caméra ToF TimeOfFLight, l’intégration est possible, l’étudiant l’avait déjà faite.
+
+
+Concernant le capteur DMU30, l’intégration sera difficile voire impossible. 
+
+
+Concernant le capteur FlirBLACKFLY, un logiciel sur linux est disponible, donc son intégration est possible
+
+
+• Difficultés : Nous ne pourrons pas utiliser un capteur
+
+• Degré d’achèvement : assez bon, il faudra faire le câblage lorsqu’on aura fait le châssis
+\\\\
+\textbf{SEMAINE 19} 
+
+• Titre : Augmentation de la puissance de calcul
+
+• Jeudi 7: Appel avec M.CAM
+
+• Mission :-Recherche pour la mise en parallèle du calcul des Raspberry Pi
+
+• Contexte : M.CAM voudrait pouvoir mettre 2 Raspberry sur le robot pour augmenter la puissance de calcul
+
+• Personne concernée : Nans
+
+• Travail réalisé :
+
+-La mise en parallèle totalement invisible est dure, mais on peut le mettre en cluster.
+Mais mettre les raspberry en cluster ne permet pas vraiment de paralléliser les Raspberry.
+
+Une solution possible: mettre en cluster les Raspberry pour une communication rapide entre les deux. du côté hardWare, on pourrait donc brancher un appareil/module sur un raspberry et un autre appareil/module sur l’autre raspberry.
+
+
+• Détails : 
+définition de cluster: Un cluster est un rassemblement de machine avec une machine maître et des machines esclaves. Dans ce genre de configuration, le maître contrôle l’esclave, et peut lui donner des tâches à faire.
+
+\url{https://raspberry-pi.fr/docker-swarm-raspberry-pi/}
+
+
+\url{https://www.youtube.com/watch?v=tcwrZtIdHR0}
+ 	
+
+• Difficultés : Les solutions qu’on a trouvées ne sont pas vraiment de la mise en parallèle
+
+
+• Degré d’achèvement : Assez bon, il faudra choisir quel raspberry aura quel capteur
+\newp
+\textbf{SEMAINE 20}
+
+• Titre : Chenille ou roue ? Changer les moteurs
+
+• Mission : Recherche dans l’optimisation de la puissance nécessaire au robot.
+
+• Contexte : Nous allons devoir changer le moteur car la charge du véhicule augmenterait nettement avec les nouveaux équipements et le moteur ne sera sûrement pas assez puissant, M.CAM  nous a proposé de mettre des chenilles à la place des roues.
+
+• Personne concerné : Jules Soubeyras (partie chenille et roue)
+			 Maxence Charlot (partie moteur)
+			 
+• Travail réalisé : 
+- avantages/ inconvénients chenilles
+-avantages/ inconvénients roues
+
+-Recherche de moteurs adéquats  plus puissants et choisir entre les moteurs à balais et les moteurs brushless.
+
+
+• Difficultés :
+Pas vraiment de difficulté si ce n’est la recherche pour choisir la meilleure des possibilités.
+
+ 
+• Degré d’achèvement : Pour les moteurs : 60\% (circuit à faire et choix définitif)
+
+• Conclusion de la mission : on pense que le moteur brushless est inutile et entraînerait des dépenses inutiles. il faudrait privilégier un moteur à balais d'une puissance supérieure et qui n'est pas en plastique pour ne pas céder à la moindre secousse.
+exemple d’un moteur possible : \url{https://www.cdiscount.com/bricolage/outillage/moteur-electrique-dc-12v-150w-13000-15000rpm-arbre/f-166010120-auc2009781691986.html}
+
+Pour les chenilles et les roues, cela dépend de l’utilité que veut en faire notre tuteur de projet (privilégier l’autonomie, ou la maniabilité, ou la vitesse etc.)
+\\\\
+\textbf{SEMAINE 21}
+
+• Titre : Réalisation du carnet de bord jusqu’à la semaine 21
+
+• Mission : Création sur un google doc du carnet de bord afin que tout le monde puisse l’éditer et rajouter ses tâches.
+
+• Contexte :  La réalisation d’un carnet de bord afin de répertorier les tâches de chacun ainsi qu’avoir le détail de celle-ci est primordiale.
+
+• Personne concerné : Tous
+
+• Travail réalisé :
+liste du travail par semaine, des recherches de chacun avec titre, détails des recherches, difficultés rencontrés et degré d'achèvement.
+
+• Détails : 
+
+• Difficultés :
+
+Se rappeler de quel jour qui a fait quoi même si nous avions noté dans un bloc note les dates
+
+
+Degré d’achèvement : 58\% ( 7 semaines sur 12 complétées)
+\newp
+\textbf{SEMAINE 22}
+
+• Titre : Mise en forme de notre rapport
+
+• Mission : Apprentissage du LaTeX
+
+• Contexte : Après avoir bien avancé dans la partie théorique de notre projet il faut maintenant rédiger notre rapport, Nans nous a donc soumis l’idée de travailler sur un éditeur LaTeX en ligne nommée Overleaf.
+
+• Personne concernée : Tous
+
+• Travail réalisé :
+- lecture et apprentissage du LaTeX
+- faire apparaître les grandes idées de notre rapport
+
+• Détails : 
+LaTeX est un langage qui permet de rédiger des documents de qualité à l’aide de commandes prédéfinis pour la mise en page. C’est un peu la Rolls Royce des éditeurs de texte m’voyez.
+
+• Difficultés :
+compréhension du LaTeX
+
+
+• Degré d’achèvement : 10\% (ce chiffre augmentera au fur et à mesure de la complétion de notre rapport)
+\\\\
+\textbf{SEMAINE 23}
+
+• Titre : Recherche d’une alternative plus viable au régulateur de tension
+
+• Mission : Trouver un moyen plus efficace que le régulateur de tension pour nos problèmes de puissance.
+
+• Contexte :  Après avoir choisis le régulateur de tension plutôt qu’un “simple” pont diviseur de tension, la recherche d’un système plus efficace n’était pas utile car nous pensions avoir trouvé une bonne solution pour la conversion du voltage. Mais Nans a trouvé un composant du nom de Buck Converter qui semble une alternative plus qu’intéressante.
+
+• Personne concerné : Maxence et Nans
+
+• Travail réalisé :
+Recherche sur les Buck Converter
+Compréhension de ce nouveau système.
+
+• Détails : 
+
+Après que Nans eu trouvé ce composant (en regardant une vidéo youtube qui en parler), Maxence fut chargé de se renseigner dessus et de comprendre comment cela fonctionne. A travers une vidéo youtube avec de bonnes explications, il comprit le fonctionnement et nous en a fait part. On a donc décidé de se pencher vers ce composant qui était une très bonne alternative car il ne produit que très peu d’énergie par rapport au monstre qu’était le Régulateur de tension (qui produisait bien trop de chaleur, chaleur qui est en réalité de l’énergie perdu, gaspillé).
+
+• Difficultés :
+
+La compréhension du fonctionnement du BUCK Converter était une tâche assez compliquée car un buck converter est composé de plusieurs éléments, bobine, condensateur, qui agisse pour diminuer le voltage sans chauffer (du moins, un minimum).
+
+
+• Degré d’achèvement : 100\% (système compris et recherches terminées)
+\newp
+\textbf{SEMAINE 24}
+
+• Titre : Prix des équipements à commander
+
+• Mission : Recherche du prix des différents équipements dont nous devrons disposer 
+
+• Contexte : Après avoir compris les enjeux et trouver les solutions aux contraintes qui nous était proposé il va falloir commander le matériel et les équipements qui nous permettront de faire face à ces contraintes.
+
+• Personne concernées : Nans et Maxence
+
+• Travail réalisé :
+- Recherche du prix d’un moteur à courant continue 
+- Recherche du prix d’un Buck
+
+• Détails : 
+
+D’autres prix ont été recherchés comme par exemple celui du régulateur de tension. Car il est utile à mettre dans notre rapport pour avoir un ordre d’idée du prix des composants.
+Ces recherches permettent donc d’argumenter le choix de nos composants, tout en les référençant à la fin de notre rapport.
+
+• Difficultés :
+
+Aucune difficultés
+
+
+• Degré d’achèvement : 100\% 
+\\\\
+\textbf{SEMAINE 25}
+
+• Titre : Mise au propre des comptes rendus des réunions
+
+• Mission : Mettre au propre les compte rendu des réunions 
+
+• Contexte : Nous devons mettre au propre les comptes-rendus, car nous avions fait seulement des brouillons. Or nous voulons les insérer dans notre dossier final pour que nos tuteurs puissent voir l’avancé de notre travail durant le deuxième semestre.
+
+• Personne concernées : Jules, Nans
+
+• Travail réalisé :
+Listage des 4 différentes réunions
+Listage des sujets abordés pendant chaque réunion
+Ecriture/résumé des comptes rendus avec les listes qu’on a fait.
+
+• Détails : 
+
+Trouver les brouillons des réunions.
+Lire/déchiffrer les brouillons.
+Lister les sujets abordés
+Sélectionner les sujets intéressants pour les mettre dans les compte rendu.
+Rédiger le compte rendu à partir de la liste. 
+
+
+• Difficultés :
+
+Pas de difficultés dans la rédaction, mais des difficultés par rapport à notre temps disponible (c’est la fin de l’année et il y a beaucoup de contrôle à réviser).
+
+
+• Degré d’achèvement : 100\% pour les 2 équipements recherché.
+\newp
+\textbf{SEMAINE 26}
+
+
+• Titre : Finalisation du dossier de cadrage
+
+• Mission : Finir le dossier pour le rendre à la date prévue (29 Juin 2020)
+
+• Contexte : Après avoir fait les comptes-rendus des réunions, nous devons compléter notre dossier sur OverLeaf pour le rendre en temps et en heure. Nous devons donc terminé de rédiger certains paragraphes, mettre les dernières images, corriger les fautes, créer les annexes et les références.
+
+• Personne concernées :Maxence,Jules,Nans
+
+• Travail réalisé :
+Finition du dossier
+
+
+• Difficultés :
+
+Aucune difficulté dans la finition, mais des difficultés par rapport à notre temps disponible (c’est la fin de l’année et il y a beaucoup de contrôle à réviser).
+
+
+• Degré d’achèvement : 100\% !!
+
+
+
+\newp       %nouvelle page custom
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+
+
+\end{document}
