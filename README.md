@@ -1,1 +1,1 @@
-# thales-project\n
+# thales-project
