@@ -46,11 +46,10 @@
 %% Définition des commandes
 
 \newcommand{\img}[4]{
-    \begin{figure}[!ht]
+    \begin{figure}[H]
     \centering
     \includegraphics[scale=#3]{#1}
     \caption{#2}
-    \label{fig:#4}
     \end{figure}
 }
 

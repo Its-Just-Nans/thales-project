@@ -1,0 +1,126 @@
+\section{Réalisation}
+
+Pour réaliser les différentes tâches, nous nous sommes repartis en plusieurs sous-groupes en fonction des problèmes qu'on avait à résoudre.
+
+La première organisation était composée de quatre groupes:
+\begin{itemize}
+\item Le groupe du problème de tension formé par Maxence CHARLOT
+\item Le groupe de la modélisation formé par Yahia BEN NAOUA et Benjamin NEUMANN
+\item Le groupe raspberry et caméra formé par Nans WEBERT
+\item Le groupe de soutien formé par Sedjro FLASON et Jules SOUBEYRAS qui était aussi chargé de faire le compte rendu
+\end{itemize}
+
+Ensuite, la solution du Buck Converter ayant été rapidement testé on est passé a une réorganisation des groupes:
+\begin{itemize}
+\item Le groupe de la modélisation maintenant formé par Yahia BEN NAOUA, Sedjro FLASON et Benjamin Neumann
+\item Le groupe raspberry et caméra formé par Maxence CHARLOT, Jules SOUBEYRAS et Nans WEBERT
+\item Le groupe formé par Sedjro FLASON et Jules SOUBEYRAS est resté inchangé pour la rédaction du compte rendu
+\end{itemize}
+
+Nous vous expliquerons donc plus loin le travail effectué par chaque groupe, les difficultés auxquelles chacun d'eux a fait face et comment elles ont été surmontées.
+
+\subsection{Groupe modelisation}
+
+Le nouveau robot que notre groupe à réaliser embarque plus d'équipement que le précédent. Pour lui permettre de supporter la charge de ces équipements et de pouvoir être maniable, il fallait repenser le châssis du robot. Un modèle de ce nouveau châssis nous a été proposé par M. CAM en début de projet mais il ne semblait pas vraiment solide.
+
+\img{img/robotProotypeV3.png}{Prototype du robot}{0.6}
+
+Pour cela, nous avons dû modéliser un nouveau châssis nous basant sur celui qui existe et en regardant où et comment est ce qu'il fallait placer les nouveaux équipements.
+Le premier point de cette étape était de choisir le bon logiciel de modélisation. On a eu le choix entre plusieurs
+
+\img{img/modélisationLogiciel.jpg}{Logicels de modélisation}{2}
+
+Pour réaliser le modèle 3D du nouveau châssis, nous avions besoin d'un logiciel gratuit et avec lequel nous pourrions facilement collaborer au sein de l'équipe. En plus de ça, il nous fallait également un logiciel qu'on pouvait prendre en main sans trop de difficulté.
+Notre choix s’est donc porté sur Fusion 360.\\
+
+Il s'agit d'un logiciel gratuit pour une utilisation personnelle, mais payante pour une utilisation collaborative. Néanmoins, nous avions la possibilité de sauvegarder le modèle conçu et de nous le partager dans un espace de stockage en ligne (Google drive).\\
+\\
+Nous avons commencé à réaliser un prototype, une première version qui ne permettait de pouvoir bien prendre en main du logiciel et également de pouvoir faire des estimations en attendant d'avoir plus de détails sur certains équipements. Il s'agissait notamment de savoir si le robot embarquerait un seul raspberry ou deux raspberrys mis en cluster puis d'avoir la caméra ToF pour évaluer les dimensions de cette dernière.
+
+\img{img/robotPremierTest.JPG}{Premier test du robot}{0.6}
+
+Avec les autres membres du groupe, nous avons regarder par la suite quel pouvait être le meilleur moyen de répartir les équipement sur le chassis afin que le robot ne soit pas soumis a des charges disproportionnées par endroit et qu'au final il ne soit pas maniable. Nous avons donc convenu du modèle ci-dessous.
+
+\img{img/dessinModèleV3.png}{Dessin du robot}{0.3}
+
+
+Après avoir finalement reçu la caméra, nous avons pu avoir accès à sa fiche technique qui renseignait toutes ces dimensions. Les conclusions du groupe chargé de travailler sur le raspberry et l'intégration de la caméra ont amené à l'utilisation de deux raspberrys. Ces changements correspondaient bien au schéma réaliser ci-dessus. Nous avons donc pu les appliqué au robot tout en prévoyant un moyen de pouvoir fixer les équipements sur le châssis. Pour cela nous avons réalisé une modélisation avec les équipements et une version imprimable.
+
+
+\img{img/robotImprimable.JPG}{Modélisation sur fusion360}{0.4}
+
+
+\subsection{Groupe Tension}
+
+%- La premiere étape était de se pencher sur la partie pratique du problème de tension. Le groupe chargé de cette tâche à donc réussi à manipuler le Buck converter et à transformer une tension d'entrée élevé et la réguler à la baisse en sortie tout en étant parfaitement stable. 
+Le problème concernant la tension est une tâche sur laquelle on s’est penché directement. En effet dès lors que l’on nous a parler de ce projet tuteuré lors de la première intervention de M. CAM, ce souci concernant les multiples tensions différentes qui étais nécessaire au bon fonctionnement de chaque équipement du robot à était évoqué. L’utilisation d’un buck converter est la solution finale que nous avons décidé de retenir étant peu couteuse, efficace et avec très peu de perte. 
+Voici à quoi ressemble le schéma du circuit de base d’un buck converter
+
+\img{img/buck_converter.png}{Schèma du circuit de base d'un buck converter}{0.9}
+
+
+Le second problème que le groupe à rencontrer était celles des câbles. En effet on n’avait pas les câbles pour brancher la caméra. M. CAM s’en est finalement chargé et à résolus ce problème en nous ramenant le câble de la caméra. 
+\\
+
+Afin de tester notre option du buck converter nous avons demandé une salle de tp d’électronique à l’IUT. Une fois dans notre salle de TP, nous avons pris notre breadboard qui est est une petite plaque en plastique parsemée de trous dans lesquels nous pouvons brancher plusieurs composants électroniques, nos câbles afin de pouvoir se brancher, des pinces crocodiles et notre buck converter. En mettant une tension à l’entrée du buck converter, on voulait que même si la tension d’entrée variait la tension en sortie du buck converter, réguler à la baisse, devais rester parfaitement stable. Après branchement, on avait réussi. On avait trouvé la solution peu couteuse et efficace qui marchais parfaitement
+
+\img{img/buckTp.jpg}{Test du buck converter en salle de TP}{0.3}
+
+
+
+%- explication les câbles et probleme de tension
+%- expliquer le problème
+%- expliquer la résolution (salle de TP, test etc..) par @MAXENCE CHARLOT 
+%- photo à mettre
+
+
+\subsection{Groupe Raspberry et camera}
+
+Le groupe chargé de cette partie avait pour défi premier la manipulation du robot V2. Il s'est donc penché sur la manipulation du robot, Ils ont donc réfléchi aux futures tâches qu'ils vont pouvoir accomplir et on put initialiser la première connexion avec le robot et à le faire rouler.
+Ils ont commencé à regarder les différents fichiers nécessaires à son bon fonctionnement et à réfléchir à ce que l'on pourrait y apporter.\\
+
+Un des points important était de comprendre ROS pour pouvoir s'en servir dans la conception du robot v3.
+
+\subsubsection{Explication de ROS}
+
+ROS (Robot Operating System) est un système d’exploitation utilisé dans le développement des logiciels pour la robotique tout comme les systèmes d’exploitation pour ordinateur, serveur, etc.
+Avant la conception de ROS les concepteurs de robot devaient non seulement concevoir la partie matérielle de leur robot, mais également la partie logiciel associée. ROS vient proposer des fonctionnalités standard à la robotique afin d’éviter aux concepteurs de devoir à chaque fois recréer de nouveaux systèmes.\\
+
+ROS est basé sur 5 grands principes à savoir :
+\begin{itemize}
+\item 	Peer to Peer : qui est un système qui permet les échanges entre les acteurs connectés au système sans transiter par un serveur central. Ici, chaque acteur joue le rôle de clients et de serveurs.
+\item 	Basé sur des outils : ROS est basé sur un système microkernel qui ne contient que le code de base pour permettre la communication entre l’OS et la partie matérielle. Chaque commande de ROS est en fait un exécutable formant de nombreux petits outils permettant de faire tourner le code.
+\item 	Multi langage : il n’y a pas de langage spécifique pour programmer ROS
+\item 	Léger : pour pallier la difficulté de réutilisation des algorithmes de développement qui pourraient être liés a un quelconque OS de robotique, les pilotes et algorithmes de ROS sont des fichiers exécutables indépendants réutilisables plusieurs fois ce qui permet de maintenir la taille réduite de ROS.
+\item 	Gratuit et open source
+\end{itemize}
+
+Plusieurs concept sont utilisés par ROS pour sont fonctionnement. Il s'agit principalement des nœuds (Nodes), des topics, des messages, des services. \\
+
+Un noeud est une instance d'un exécutable. Il peut par exemple correspondre à un capteur ou à un moteur présent sur le robot.\\
+
+L'échange d'informations entre les noeuds se font de manière asynchrone par un topic ou de manière synchrone par un service.\\
+
+Un topic est un système de transport de données basées sur les concepts de subscribe (abonnement) et de publish (publication).
+
+Plusieurs noeuds pourront donc publier et lire des informations sur un topic. Le topic est dit "typé" parce que les messages sont toujours structurés de la même manière.\\
+
+Un service par contre est une notion de communication entre deux noeuds basé sur le système de requête et de réponse.\\
+
+Chaque noeud qui se lance se déclare au master.
+Le master est un service d'enregistrement et de déclaration des noeuds qui permet aux noeuds de se connaître et d'échanger des informations. Il comprend une sous partie appelé "parameter server" qui est comme une base de données centralisé ou les noeuds peuvent sauvegarder des informations.\\
+
+\img{img/rosR.jpg}{Schéma de ROS}{0.7}
+
+
+Comme dit plus tôt, ROS ne dépend d’aucun langage spécifique de programmation. Trois librairies sont définies principalement pour programmer en ROS à savoir, Python, C++ et LISP.
+
+Pour finir, les fichiers de ROS sont organisés  de façon hiérarchique en package et en stack. Un package est un répertoire qui contient les nœuds, les librairies externes, les fichiers de configuration. Un stack est un ensemble de packages.
+
+%- explication raspberry et caméra (faire le début, le groupe s'occupera du reste)
+%- explication de ROS (voir cette viédo et la cité https://www.youtube.com/watch?v=iLiI_IRedhI )
+%- explication technique de l'API de la camera @méchant nans 
+%- explication des solutions mises en places @méchant nans
+
+\subsection{Groupe Compte-rendu}
+dire ce que vous avez fait

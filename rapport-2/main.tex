@@ -2,7 +2,7 @@
 
 \title{Projet Tutoré}
 \author{Groupe Robot}
-\date{May 2020}
+\date{Mai 2021}
 
 
 
@@ -19,9 +19,9 @@
 \newgeometry{left=1cm,right=1cm,top=2cm,bottom=1.5cm}
 
 
-\includegraphics[width=5cm]{./img/logoUniv.png}
+\includegraphics[height=2.1cm]{./img/uca2.png}
 \hfill
-\includegraphics[width=6cm]{./img/logoIUT.jpg}
+\includegraphics[height=2.75cm]{./img/logoThales.png}
 
 
 \begin{center}
@@ -35,14 +35,13 @@ Compte-rendu
 \large
 Membre du groupe:\\
 Yahia BEN NAOUA, Maxence CHARLOT, Sêdjro FLASON, Benjamin NEUMANN,\\ Jules SOUBEYRAS et Nans WEBERT\\
+\vspace{0.2cm}
 Promotion 2019-2021\\
-\vspace{2.2cm}
+\vspace{1cm}
 Sujet de projet : Projet Robot - Groupe 2\\
 Tuteurs de projet : M. CAM et Mme ESCAZUT\\
 \vspace{1cm}
-\includegraphics[width=8cm]{img/logoRetT.png}
-\hfill
-\includegraphics[width=8cm]{img/logoThales.png}
+\includegraphics[height=3cm]{img/logoRetT.png}
 
 \end{center}
 
@@ -67,19 +66,21 @@ Tuteurs de projet : M. CAM et Mme ESCAZUT\\
 %==========================================INFO===================================
 \newp
 \vspace*{\stretch{1}} % centrage vertical
-\paragraph{Introduction}
-Le DUT Réseau et Télécommunications est une formation polyvalente qui nous permet d’acquérir des compétences dans les domaines de l’informatique et des réseaux afin d’être capable de nous adapter aux besoins spécifiques des entreprises à la fin du cursus ou de poursuivre les études en école d’ingénieur ou en licence dans les domaines qui concernent les technologies de l’information et de la communication. 
-Pour mieux appréhender les réalités du travail en entreprise et pour nous donner de l’autonomie dans la réalisation de projets, nous réalisons au cours de notre cursus un projet tuteuré étalé sur trois semestres.
+\section*{Introduction}
 
-Dans le cadre de notre projet tuteuré, notre cheffe de département Mme Cathy ESCAZUT a permis a notre groupe exclusivement composé d’alternants la chance de travailler avec une des plus grandes entreprises d’Europe, Thales Alenia Space qui est une entreprise spatiale leader dans la conception de satellite. 
+Le DUT Réseau et Télécommunications est une formation polyvalente qui nous permet d’acquérir des compétences dans les domaines de l’informatique et des réseaux afin d’être capable de nous adapter aux besoins spécifiques des entreprises à la fin du cursus ou de poursuivre les études en école d’ingénieur ou en licence dans les domaines qui concernent les technologies de l’information et de la communication.\\
 
-Le projet que nous a confié M. Philipe CAM, Chef du Service Missionisation \& Validation à Thales Alenia Space, consiste à la conception de la troisième version d’un robot autonome pour le compte de l’entreprise. Le robot en est actuellement à sa deuxième version et le but de notre projet est de réaliser le robot autonome version 3 en utilisant des composants « typés spatiaux » afin de permettre de réaliser des prototypes facilement et rapidement.
+Pour mieux appréhender les réalités du travail en entreprise et pour nous donner de l’autonomie dans la réalisation de projets, nous réalisons au cours de notre cursus un projet tuteuré étalé sur trois semestres.\\
 
-Notre première partie de projet tuteuré consistait à déterminer des solutions pour l’amélioration du robot lors du second semestre. Il s’agissait entre autres de trouver une solution pour les problèmes de tension, le choix des capteurs, de la caméra à intégrer et la refonte du châssis. Au cours des semestres 3 et 4 nous avons revus et fais des modifications sur les solutions choisies au second semestre, et nous les avons mises en application pour la réalisation de la troisième version du robot.
+Dans le cadre de notre projet tuteuré, notre cheffe de département Mme ESCAZUT a permis a notre groupe exclusivement composé d’alternants la chance de travailler avec une des plus grandes entreprises d’Europe, Thales Alenia Space qui est une entreprise spatiale leader dans la conception de satellite.\\
 
-Pour ce faire, nous avons étudié les problèmes auxquels nous étions confrontés ainsi que les taches à réaliser et nous avons réparti le travail en sous-groupe.
+Le projet que nous a confié M. CAM, Chef du Service Missionisation \& Validation à Thales Alenia Space, consiste à la conception de la troisième version d’un robot autonome pour le compte de l’entreprise. Le robot en est actuellement à sa deuxième version et le but de notre projet est de réaliser le robot autonome version 3 en utilisant des composants « typés spatiaux » afin de permettre de réaliser des prototypes facilement et rapidement.\\
 
-Par la suite, nous vous exposerons les différents problèmes auxquels nous avons été confrontés, les solutions qu’on a appliquées pour les résoudre et les différentes parties de la réalisation du projet en fonctions des solutions proposées pour chaque problème à traiter. 
+Notre première partie de projet tuteuré consistait à déterminer des solutions pour l’amélioration du robot lors du second semestre. Il s’agissait entre autres de trouver une solution pour les problèmes de tension, le choix des capteurs, de la caméra à intégrer et la refonte du châssis. Au cours des semestres 3 et 4 nous avons revus et fais des modifications sur les solutions choisies au second semestre, et nous les avons mises en application pour la réalisation de la troisième version du robot.\\
+
+Pour ce faire, nous avons étudié les problèmes auxquels nous étions confrontés ainsi que les taches à réaliser et nous avons réparti le travail en sous-groupe.\\
+
+Par la suite, nous vous exposerons les différents problèmes auxquels nous avons été confrontés, les solutions qu’on a appliquées pour les résoudre et les différentes parties de la réalisation du projet en fonctions des solutions proposées pour chaque problème à traiter.\\
 
 
 \vspace*{\stretch{1}} % centrage vertical
@@ -94,11 +95,13 @@ Par la suite, nous vous exposerons les différents problèmes auxquels nous avon
 
 \section{Mise en situation}
 
-Le projet que nous a confié Thales a réparti en deux groupes différents qui étaient en compétition. Chaque groupe a travaillé sur la mise en place des solutions pour la réalisation de la troisième version du robot.
+Le projet que nous a confié Thales Alenia Space a été réparti en deux groupes différents qui étaient en compétition. Chaque groupe a travaillé sur la mise en place des solutions pour la réalisation de la troisième version du robot.\\
 
-Le premier groupe avait proposé comme solution l’ajout d’une nouvelle batterie 32v, déclinaison de la tension électrique en 24,12 et 5V, l’utilisation d’un raspberry 4, le rajout d’un switch Ethernet, l'ajout de la camera BFLY puis enfin d’un nouveau châssis pour accueillir le tout.
+Ces solutions concernaient entre autres tout ce qui touchait à la tension, au rajout de nouveaux capteurs, au rajout d'un nouveau raspberry pour gérer les données que va traiter le robot et à la remodélisation du châssis. Étant donné que les équipements embarqués sur le robot ont des tensions différentes, il fallait  connaître les tensions délivrées par chacun et pouvoir alimenter le robot avec une source adéquate, tout en évitant les problèmes de surchauffe.\\
 
-Le deuxième groupe s’est surtout penché sur les problèmes de tension entre le raspberry et l’alimentation et a proposé plusieurs solutions pour régler ce problème. Ensuite, l’utilisation de la camera ToF-Time of Flight étant donné quelle avait déjà été testé et son intégration était possible. Pour finir, il y avait également la refonte du châssis. 
+Le premier groupe avait proposé comme solution l’ajout d’une nouvelle batterie 32 Volts, la déclinaison de la tension électrique en 24 Volts, 12 Volts et 5 Volts, l’utilisation d’un second raspberry, le rajout d’un switch Ethernet, l'ajout de la camera TOF puis enfin d’un nouveau châssis pour accueillir le tout.\\
+
+Le deuxième groupe s’est plus penché sur les problèmes de tension entre le raspberry et l’alimentation et a proposé plusieurs solutions pour régler ce problème. Ensuite, l’utilisation de la camera ToF-Time of Flight étant donné quelle avait déjà été testé et son intégration était possible. Pour finir, il y avait également la refonte du châssis. 
 
 La solution choisie était celle du deuxième groupe, et les deux groupes se sont réunis pour travailler sur le projet pendant le semestre 3 et 4.
 
@@ -107,7 +110,11 @@ La solution choisie était celle du deuxième groupe, et les deux groupes se son
 \subsubsection{Le problème de Tension}
 Comme énoncé lors du rapport en fin de semestre 2 le robot est constitué de capteurs qui ont besoin d’être alimentés en électricité. Mais malheureusement, le voltage des différents capteurs est différent, soit 24 volts, soit 12 volts, soit 5 volts.
 
-Nous devons donc partir de l’élément primordial qui fournit l’énergie, la batterie, pour ensuite changer le voltage. Nous devons donc partir de l’élément primordial qui fournit l’énergie, la batterie, pour ensuite changer le voltage. Notre batterie est composée de 8 piles qui fournissent un total de 32 volts, chaque pile délivre 4 volts.
+Nous devons donc partir de l’élément primordial qui fournit l’énergie, la batterie, pour ensuite changer le voltage. Notre batterie est composée de 8 piles qui fournissent un total de 32 volts, chaque pile délivre 4 volts.
+
+Il faudra donc gérer toutes les déclinaisons de tension pour pouvoir alimenter comme il faut chacun des équipements présents sur le robot et permettre d'éviter tout ce qui est surchauffé.\\
+\\
+Plusieurs solutions avaient été proposer notamment le pont diviseur de tension qui utilise les résistances pour abaisser les tensions, le régulateur de tension qui gère automatiquement la tension de sortie en fonction de la tension d’entrée et qui est couplé avec des condensateurs pour éviter des perturbations du signal et pour finir la solution du Buck converter.
 
 \subsubsection{Le schéma 3D}
 L’un des objectifs principaux de notre projet tuteuré est de pouvoir embarquer les nouveaux équipements. Pour cela, un problème de place sur le châssis se posait. Il fallait donc l’améliorer et trouver différentes solutions pour que le robot puisse avoir des fondements solides lui permettant de réaliser ce pour quoi il avait été conçu. 
@@ -118,153 +125,42 @@ Les roues sont moins confortables au niveau de la flottaison, mais consomment mo
 Les chenilles quant à elles offrent une flottaison inégalable, mais ont une consommation légèrement plus élevée de carburant (8\%). Les chenilles permettent une charge plus élevée, mais en revanche,le mécanisme d’entraînement des chenilles occasionne plus de résistance, de sorte quelles fournissent moins de puissance à des vitesses élevées.
 
 \subsubsection{Intégration de la caméra}
+
+EXPLICATION DE CE QUE c'est ET COMMENT ça MARCHE 
+
+\img{./img/tof.jpg}{Caméra Time Of Flight}{0.5}
+
 Concernant le capteur caméra ToF Time Of Flight, on avait vu que l’intégration est possible, étant donné que l’étudiant qui avait réalisé la deuxième version du robot l’avait déjà faite.
+
+
 
 On en était arriver a la conclusion que c'était la meilleur solution surtout que le caméra ToF était déjà à la disposition de M. CAM.
 
 Néanmoins, les questions sur le traitement des données se posaient toujours. Est-ce qu'il fallait les traiter sur les raspberrys ou sur un ordinateur après l’utilisation d’un raspberry ?   
 
-\subsection{Solution retenu}
+\newp
+\input{thales-project/rapport-2/partie2}
 
-\subsubsection{Le problème de Tension}
-
-La solution retenue pour régler ce problème est le Buck Converter. Le Buck Converter permet entre autres d’obtenir une tension réglable, mais toujours inférieure à celle présente à l’entrée. Il a donc un rôle de variateur de tension continue. C’est donc précisément notre cas.
-
-Cette solution a donc pour avantage de n’émettre presque pas de chaleur grâce à l’inducteur, car un inducteur idéal ne dissipe pas l’énergie sous forme de chaleur.
-
-\subsubsection{Le schéma 3D}
-
-L’une des solutions retenues à la fin du semestre 2  était les chenilles pour des raisons de maniabilité. 
-Néanmoins au début du semestre 3 M.CAM a décidé qu’on partirait plutôt sur des roues, mais des roues adaptées au terrain que devrait emprunter le robot.
-
-On est également parti sur une remodélisation totale du châssis en prenant en compte les nouveaux équipements qu’il doit embarquer. Il s’agit donc de deux raspberrys, d’un switch, d’un support pour la caméra ToF, de l’alimentation et du moteur. 
-
-\subsubsection{Intégration de la caméra}
-
-dire qu'il fallait intégrer la caméra qsdfdsqfsqfsdqfqsdfqsdf
-
-\section{Réalisation}
-
-Pour réaliser les différentes tâches, on s'est repartis en plusieurs sous-groupes en fonction des problèmes qu'on avait à résoudre.
-
-La première organisation était composée de quatre groupes:\\
-- Le groupe du problème de tension formé par Maxence CHARLOT\\
-- Le groupe de la modélisation formé par Yahia BEN NAOUA et Benjamin Neumann\\
-- Le groupe raspberry et caméra formé par Nans WEBERT\\
-- Le groupe de soutien formé par Sedjro FLASON et Jules SOUBEYRAS qui était aussi chargé de faire le compte rendu\\
-
-Ensuite, la solution du Buck Converter ayant été rapidement testé on est passé a une réorganisation des groupes:\\
-- Le groupe de la modélisation maintenant formé par Yahia BEN NAOUA, Sedjro FLASON et Benjamin Neumann\\
-- Le groupe raspberry et caméra formé par Maxence CHARLOT, Jules SOUBEYRAS et Nans WEBERT\\
-- Le groupe formé par Sedjro FLASON et Jules SOUBEYRAS est resté inchangé pour la rédaction du compte rendu\\
-
-Nous vous expliquerons donc plus loin le travail effectué par chaque groupe, les difficultés auxquelles chacun d'eux a fait face et comment elles ont été surmontées.
-
-\subsection{Groupe modelisation}
-
-Le nouveau robot que notre groupe à réaliser embarque plus d'équipement que le précédent. Pour lui permettre de supporter la charge de ces équipements et de pouvoir être maniable, il fallait repenser le châssis du robot.Un modèle de ce nouveau châssis nous a été proposé par M. CAM en début de projet mais il ne semblait pas vraiment solide.
-
-\vspace{0.5cm}
-\imgNofig{img/robotProotypeV3.png}{0.6}
-\vspace{0.5cm}
-
-Pour cela, nous avons dû modéliser un nouveau châssis nous basant sur celui qui existe et en regardant où et comment est ce qu'il fallait placer les nouveaux équipements.
-Le premier point de cette étape était de choisir le bon logiciel de modélisation. On a eu le choix entre plusieurs
-
-\vspace{0cm}
-\imgNofig{img/modélisationLogiciel.jpg}{2}
-\vspace{0cm}
-
-Pour réaliser le modèle 3D du nouveau châssis, nous avions besoin d'un logiciel gratuit et avec lequel nous pourrions facilement collaborer au sein de l'équipe. En plus de ça, il nous fallait également un logiciel qu'on pouvait prendre en main sans trop de difficulté.
-Notre choix s’est donc porté sur Fusion 360.
-Il s'agit d'un logiciel gratuit pour une utilisation personnelle, mais payante pour une utilisation collaborative. Néanmoins, nous avions la possibilité de sauvegarder le modèle conçu et de nous le partager dans un espace de stockage en ligne (Google drive).\\
-\\
-Nous avons commencé à réaliser un prototype, une première version qui ne permettait de pouvoir bien prendre en main du logiciel et également de pouvoir faire des estimations en attendant d'avoir plus de détails sur certains équipements. Il s'agissait notamment de savoir si le robot embarquerait un seul raspberry ou deux raspberrys mis en cluster puis d'avoir la caméra ToF pour évaluer les dimensions de cette dernière.
-
-\vspace{0.5cm}
-\imgNofig{img/robotPremierTest.JPG}{0.6}
-\vspace{0.5cm}
-
-Avec les autres membres du groupe, nous avons regarder par la suite quel pouvait être le meilleur moyen de répartir les équipement sur le chassis afin que le robot ne soit pas soumis a des charges disproportionnées par endroit et qu'au final il ne soit pas maniable. Nous avons donc convenu du modèle ci-dessous.
-
-\vspace{0.5cm}
-\imgNofig{img/dessinModèleV3.png}{0.3}
-\vspace{0.5cm}
-
-Après avoir finalement reçu la caméra, nous avons pu avoir accès à sa fiche technique qui renseignait toutes ces dimensions. Les conclusions du groupe chargé de travailler sur le raspberry et l'intégration de la caméra ont amené à l'utilisation de deux raspberrys. Ces changements correspondaient bien au schéma réaliser ci-dessus. Nous avons donc pu les appliqué au robot tout en prévoyant un moyen de pouvoir fixer les équipements sur le châssis. Pour cela nous avons réalisé une modélisation avec les équipements et une version imprimable.
-      
-\vspace{0.1cm}
-\imgNofig{img/robotImprimable.JPG}{0.4}
-\vspace{0.1cm}
-
-\subsection{Groupe Tension}
-
-La premiere étape était de se pencher sur la partie pratique du problème de tension. Le groupe chargé de cette tâche à donc réussi à manipuler le Buck converter et à transformer une tension d'entrée élevé et la réguler à la baisse en sortie tout en étant parfaitement stable.
+\newp
+\input{thales-project/rapport-2/partie3}
 
 
 
-%- explication les câbles et probleme de tension
-%- expliquer le problème
-%- expliquer la résolution (salle de TP, test etc..) par @MAXENCE CHARLOT 
-%- photo à mettre
+\newp
+\section{Conclusion}
+
+\subsection{Version finale du projet}
+
+\subsection{apport de ce projet dans notre vie pro}
 
 
-\subsection{Groupe Raspberry et camera}
-
-Le groupe chargé de cette partie avait pour défi premier la manipulation du robot V2. Il s'est donc penché sur la manipulation du robot, Ils ont donc réfléchi aux futures tâches qu'ils vont pouvoir accomplir et on put initialiser la première connexion avec le robot et à le faire rouler.
-Ils ont commencé à regarder les différents fichiers nécessaires à son bon fonctionnement et à réfléchir à ce que l'on pourrait y apporter.\\
-
-Un des points important était de comprendre ROS pour pouvoir s'en servir dans la conception du robot v3.\\
-\\
-Explication de ROS\\
-\\
-\begin{itemize}
-    \item 
-ROS (Robot Operating System) est un système d’exploitation utilisé dans le développement des logiciels pour la robotique tout comme les systèmes d’exploitation pour ordinateur, serveur, etc.
-Avant la conception de ROS les concepteurs de robot devaient non seulement concevoir la partie matérielle de leur robot, mais également la partie logiciel associée. ROS vient proposer des fonctionnalités standard à la robotique afin d’éviter aux concepteurs de devoir à chaque fois recréer de nouveaux systèmes. ROS est basé sur 5 grands principes à savoir : \\
-\\
-\item 	Peer to Peer : qui est un système qui permet les échanges entre les acteurs connectés au système sans transiter par un serveur central. Ici, chaque acteur joue le rôle de clients et de serveurs.\\
-\item 	Basé sur des outils : ROS est basé sur un système microkernel qui ne contient que le code de base pour permettre la communication entre l’OS et la partie matérielle. Chaque commande de ROS est en fait un exécutable formant de nombreux petits outils permettant de faire tourner le code.\\
-\item 	Multi langage : il n’y a pas de langage spécifique pour programmer ROS\\
-\item 	Léger : pour pallier la difficulté de réutilisation des algorithmes de développement qui pourraient être liés a un quelconque OS de robotique, les pilotes et algorithmes de ROS sont des fichiers exécutables indépendants réutilisables plusieurs fois ce qui permet de maintenir la taille réduite de ROS.\\
-\item 	Gratuit et open source\\
-\end{itemize}
-\\
-Plusieurs concept sont utilisés par ROS pour sont fontionnement. Il s'agit principalement des nœuds (Nodes), des topics, des messages, des services. \\
-\\
-  Un noeud est une instance d'un exécutable. Il peut par exemple correspondre à un capteur ou à un moteur présent sur le robot.\\
-\\
-L'échange d'informations entre les noeuds se font de manière asynchrone par un topic ou de manière synchrone par un service.\\
-\\
-Un topic est un système de transport de données basées sur les concepts de subscribe (abonnement) et de publish (publication).
-
-Plusieurs noeuds pourront donc publier et lire des informations sur un topic. Le topic est dit "typé" parce que les messages sont toujours structurés de la même manière.\\
-\\
-Un service par contre est une notion de communication entre deux noeuds basé sur le système de requête et de réponse.\\
-\\
-Chaque noeud qui se lance se déclare au master.
-Le master est un service d'enregistrement et de déclaration des noeuds qui permet aux noeuds de se connaître et d'échanger des informations. 
-
-%- explication raspberry et caméra (faire le début, le groupe s'occupera du reste)
-%- explication de ROS (voir cette viédo et la cité https://www.youtube.com/watch?v=iLiI_IRedhI )
-%- explication technique de l'API de la camera @méchant nans 
-%- explication des solutions mises en places @méchant nans
-
-\subsection{Groupe Compte-rendu}
-    dire ce que vous avez fait
-\newp           
-
-\subsection{Conclusion}
-
-- apport de ce projet dans notre vie pro
-- apport de ce projet dans nos compétences
-
-
+\subsection{apport de ce projet dans nos compétences}
+certain membre ont du apprendre le \LaTeX
 
 \newp  
 
 \appendix
-\section{Annexe - Compte rendu de la réunion du 14 Novembre 2020}
+\section*{Annexe - Compte rendu de la réunion du 14 Novembre 2020}
 La première réunion que nous avons faite a eu lieu le 14 Novembre 2020. Elle s'est réalisée avec tout les membres de notre groupe.
 \\
 
@@ -275,14 +171,16 @@ Les nouveaux membres ont donc reçu le dossier de cadrage, puis ils ont dû pren
 \\
 \\
 Le point à l'issue de cette réunion a été de partir sur:\\
-- un robot avec deux caméras (TOF et BlackFly)\\
-- un robot avec des chenilles\\
-- les batteries a porter par le robot\\
-- un switch\\
-- un raspberry 3 (on verra pour upgrade avec deux ou 1 raspberry + un compute module) donc il fallait prévoir une potentielle mise à jour dans la modélisation.
+\begin{itemize}
+\item  un robot avec deux caméras (TOF et BlackFly)\\
+\item   un robot avec des chenilles\\
+\item  les batteries a porter par le robot\\
+\item   un switch\\
+\item   un raspberry 3 (on verra pour upgrade avec deux ou 1 raspberry + un compute module) donc il fallait prévoir une potentielle mise à jour dans la modélisation.
+\end{itemize}
 
 \newp
-\section{Annexe - Compte rendu de la réunion du 21 Novembre 2020}
+\section*{Annexe - Compte rendu de la réunion du 21 Novembre 2020}
 La deuxième réunion que nous avons faite a eu lieu le 21 Novembre 2020. Elle s'est réalisée avec tout les membres de notre groupe.\\
 
 Pendant cette réunion, nous avons travaillé sur une présentation du travail à réaliser avec les groupes qui ont été définis.\\
@@ -307,7 +205,7 @@ En ce qui concerne l'ajout de la caméra, la première partie consiste à la mis
 Pour finir nous avons fait le point sur les matériaux nécessaires pour la réalisation des différentes tâches.
 
 \newp
-\section{Annexe - Compte rendu de la réunion du 27 Novembre 2020}
+\section*{Annexe - Compte rendu de la réunion du 27 Novembre 2020}
 La 3ème réunion que nous avons faites a eu lieu le 27 Novembre 2020. Elle s'est réalisée avec tout les membres de notre groupe ainsi qu'avec M. CAM et Mme ESCAZUT.
 
 Au cours de cette rencontre qui à eu lieu a l'IUT, nous avons présenter le travail qu'on aura à réaliser les semaine qui suivront, les problèmes du robot et les solutions pour les résoudre et l'organisation de notre groupe pour pouvoir résoudre ces problèmes.
@@ -320,7 +218,7 @@ M. CAM et Mme ESCAZUT nous ont demandé de faire une liste plus exhaustive des m
 
 
 \newp
-\section{Annexe - Compte rendu de la réunion du 6 Janvier 2021}
+\section*{Annexe - Compte rendu de la réunion du 6 Janvier 2021}
 La 4ème réunion que nous avons faites a eu lieu le 6 Janvier 2021. Elle s'est réalisée avec tout les membres de notre groupe.
 
 Pour présenter le département R\&T et la formation au futurs étudiants, l'université organise des journées portes ouvertes où les projets tuteurés sont mis en avant. Compte tenue de la situation sanitaire actuelle, il fallu organisé cette journée porte ouverte virtuellement.
@@ -331,7 +229,7 @@ Notre réunion a donc consisté à faire les points sur les différents thèmes 
 
 
 \newp
-\section{Annexe - Compte rendu de la réunion du 14 Janvier 2021}
+\section*{Annexe - Compte rendu de la réunion du 14 Janvier 2021}
 La 5ème réunion que nous avons faites a eu lieu le 14 Janvier 2021. Elle s'est réalisée avec tout les membres de notre groupe ainsi que M. CAM.
 
 
@@ -344,6 +242,10 @@ Il nous a également fourni les matériaux dont ont avons besoin pour monter le 
 Nous en avons profiter pour faire quelques plans à rajouter à notre vidéo.
 
 \newp       %nouvelle page custom
+
+\listoffigures
+
+\newp
 
 \bibliographystyle{unsrt}
 \bibliography{references}
