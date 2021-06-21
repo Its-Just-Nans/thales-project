@@ -59,10 +59,11 @@ Voici à quoi ressemble le schéma du circuit de base d’un buck converter
 \img{img/buck_converter.png}{Schèma du circuit de base d'un buck converter}{0.9}
 
 
-Le second problème que le groupe à rencontrer était celles des câbles. En effet on n’avait pas les câbles pour brancher la caméra. M. CAM s’en est finalement chargé et à résolus ce problème en nous ramenant le câble de la caméra. 
+Le second problème que le groupe à rencontrer était celles des câbles. En effet on n’avait pas les câbles pour brancher la caméra. Mais après un moment d'attente  M. CAM à finalement réussis a avoir le câble et nous la apporter. 
 \\
+\img{img/cableCam.png}{Câble pour la caméra}{0.9}
 
-Afin de tester notre option du buck converter nous avons demandé une salle de tp d’électronique à l’IUT. Une fois dans notre salle de TP, nous avons pris notre breadboard qui est est une petite plaque en plastique parsemée de trous dans lesquels nous pouvons brancher plusieurs composants électroniques, nos câbles afin de pouvoir se brancher, des pinces crocodiles et notre buck converter. En mettant une tension à l’entrée du buck converter, on voulait que même si la tension d’entrée variait la tension en sortie du buck converter, réguler à la baisse, devais rester parfaitement stable. Après branchement, on avait réussi. On avait trouvé la solution peu couteuse et efficace qui marchais parfaitement
+Afin de tester notre option du buck converter nous avons demandé une salle de TP d’électronique à l’IUT. Une fois dans notre salle de TP, nous avons pris notre "breadboard" qui est est une petite plaque en plastique parsemée de trous dans lesquels nous pouvons brancher plusieurs composants électroniques, nos câbles afin de pouvoir se brancher, des pinces crocodiles et notre buck converter. En mettant une tension à l’entrée du buck converter, on voulait que même si la tension d’entrée variait la tension en sortie du buck converter, réguler à la baisse, devais rester parfaitement stable. Après branchement, on avait réussi. On avait trouvé la solution peu couteuse et efficace qui marchait parfaitement.
 
 \img{img/buckTp.jpg}{Test du buck converter en salle de TP}{0.3}
 
@@ -76,10 +77,12 @@ Afin de tester notre option du buck converter nous avons demandé une salle de t
 
 \subsection{Groupe Raspberry et camera}
 
-Le groupe chargé de cette partie avait pour défi premier la manipulation du robot V2. Il s'est donc penché sur la manipulation du robot, Ils ont donc réfléchi aux futures tâches qu'ils vont pouvoir accomplir et on put initialiser la première connexion avec le robot et à le faire rouler.
+Le groupe chargé de cette partie avait pour défi premier la manipulation du robot V2. Il s'est donc penché sur la manipulation du robot, sur les futures tâches qu'il va pouvoir accomplir et a pu initialiser la première connexion avec le robot et à le faire rouler.
 Ils ont commencé à regarder les différents fichiers nécessaires à son bon fonctionnement et à réfléchir à ce que l'on pourrait y apporter.\\
 
-Un des points important était de comprendre ROS pour pouvoir s'en servir dans la conception du robot v3.
+\img{img/robotrobot.jpg}{Test pour faire fonctionner le robot}{0.1}
+
+Un des points importants était de comprendre le fonctionnement de ROS pour pouvoir s'en servir dans la conception du robot v3.
 
 \subsubsection{Explication de ROS}
 
@@ -88,27 +91,26 @@ Avant la conception de ROS les concepteurs de robot devaient non seulement conce
 
 ROS est basé sur 5 grands principes à savoir :
 \begin{itemize}
-\item 	Peer to Peer : qui est un système qui permet les échanges entre les acteurs connectés au système sans transiter par un serveur central. Ici, chaque acteur joue le rôle de clients et de serveurs.
-\item 	Basé sur des outils : ROS est basé sur un système microkernel qui ne contient que le code de base pour permettre la communication entre l’OS et la partie matérielle. Chaque commande de ROS est en fait un exécutable formant de nombreux petits outils permettant de faire tourner le code.
-\item 	Multi langage : il n’y a pas de langage spécifique pour programmer ROS
+\item 	Peer to peer : qui est un système qui permet les échanges entre les acteurs connectés au système sans transiter par un serveur central. Ici, chaque acteur joue le rôle de clients et de serveurs.
+\item 	Basé sur des outils : ROS est basé sur un système "microkernel" qui ne contient que le code de base pour permettre la communication entre l’OS et la partie matérielle. Chaque commande de ROS est en fait un exécutable formant de nombreux petits outils permettant de faire tourner le code.
+\item 	Multi langage : il n’y a pas de langage spécifique pour programmer avec ROS
 \item 	Léger : pour pallier la difficulté de réutilisation des algorithmes de développement qui pourraient être liés a un quelconque OS de robotique, les pilotes et algorithmes de ROS sont des fichiers exécutables indépendants réutilisables plusieurs fois ce qui permet de maintenir la taille réduite de ROS.
 \item 	Gratuit et open source
 \end{itemize}
 
-Plusieurs concept sont utilisés par ROS pour sont fonctionnement. Il s'agit principalement des nœuds (Nodes), des topics, des messages, des services. \\
+Plusieurs concepts sont utilisés par ROS pour son fonctionnement. Il s'agit principalement des nœuds (Nodes), des topics, des messages, des services. \\
 
 Un noeud est une instance d'un exécutable. Il peut par exemple correspondre à un capteur ou à un moteur présent sur le robot.\\
 
 L'échange d'informations entre les noeuds se font de manière asynchrone par un topic ou de manière synchrone par un service.\\
 
-Un topic est un système de transport de données basées sur les concepts de subscribe (abonnement) et de publish (publication).
-
+Un topic est un système de transport de données basées sur les concepts de "subscribe" (abonnement) et de "publish" (publication).
 Plusieurs noeuds pourront donc publier et lire des informations sur un topic. Le topic est dit "typé" parce que les messages sont toujours structurés de la même manière.\\
 
-Un service par contre est une notion de communication entre deux noeuds basé sur le système de requête et de réponse.\\
+Un service par contre est une notion de communication entre deux noeuds basés sur le système de requête et de réponse.\\
 
 Chaque noeud qui se lance se déclare au master.
-Le master est un service d'enregistrement et de déclaration des noeuds qui permet aux noeuds de se connaître et d'échanger des informations. Il comprend une sous partie appelé "parameter server" qui est comme une base de données centralisé ou les noeuds peuvent sauvegarder des informations.\\
+Le master est un service d'enregistrement et de déclaration des noeuds qui permet aux noeuds de se connaître et d'échanger des informations. Il comprend une sous partie appelé "parameter server" qui est comme une base de données centralisée ou les noeuds peuvent sauvegarder des informations.\\
 
 \img{img/rosR.jpg}{Schéma de ROS}{0.7}
 
@@ -124,9 +126,11 @@ Pour finir, les fichiers de ROS sont organisés  de façon hiérarchique en pack
 
 \subsection{Groupe Compte-rendu}
 
-Notre groupe de compte-rendu avais pour tâche initiale de rédiger les bilans des réunions auxquelles ont a pu participer. Les réunion était disposé de telle sorte que toutes les deux semaine nous pouvions montrer les étendu de nos avancés. C'est réunion se sont passer en distanciel à base de réunion téléphonique et sur Microsoft Teams, mais aussi en présentiel à l'IUT lorsque M. CAM était disponible.
+Notre groupe de compte-rendu avait pour tâche initiale de rédiger les bilans des réunions auxquelles on a participé puis de rédiger également le rapport du tuteuré. Les réunions étaient faites toutes les deux semaines. Au cours de ces réunions, nous devions montrer notre avancement sur le projet. Ces réunions se sont passées en téléconférence par téléphone et sur Microsoft Teams, mais aussi en présentiel à l’IUT lorsque M. CAM était disponible.\\
 
-Nous avons décidé en début de projet que notre groupe se scinderait en deux. Sedjro irait apporter de l'aide au groupe de modélisation, mais aussi vérifier que le groupe avance bien et dans les temps. Jules lui irait avec Maxence pour les problème de tension puis fusionnerait avec Nans et Maxence pour le travail sur les raspberry, ROS, et la caméra.
+Entre les membres du groupe, plusieurs réunions ont également été faites pour faire le point sur l'avancement de chaque groupe. Le compte rendu de quelques-unes de ces réunions a été fait en annexe.
 
-Etant au centre des activités de chaque groupe cela nous a permis de pouvoir les aider et pouvoir transcrire le travail qui a été réalisé.
+Nous avons décidé en début de projet que notre groupe se scinderait en deux. Sedjro irait apporter de l’aide au groupe de modélisation, mais aussi vérifier que le groupe avance bien et dans les temps. Jules lui irait avec Maxence pour les problèmes de tension puis ils fusionneraient par la suite avec Nans pour le travail sur les Raspberry,  sur ROS, et sur la caméra.\\
+
+Étant au centre des activités de chaque groupe cela nous a permis de les aider et pouvoir transcrire le travail qui a été réalisé. Nous avons donc pu à partir de là rédiger le rapport du projet.
 

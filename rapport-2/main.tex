@@ -64,24 +64,6 @@ Tuteurs de projet : M. CAM et Mme ESCAZUT\\
 \vspace*{\stretch{1}} % centrage vertical
 
 %==========================================INFO===================================
-\newp
-\vspace*{\stretch{1}} % centrage vertical
-\section*{Introduction}
-%le premier paragraphe est trop long, rajouter de virgule ou pause
-Le DUT Réseau et Télécommunications est une formation polyvalente qui nous permet d’acquérir des compétences dans les domaines de l’informatique et des réseaux afin d’être capable de nous adapter aux besoins spécifiques des entreprises à la fin du cursus ou de poursuivre les études en école d’ingénieur ou en licence dans les domaines qui concernent les technologies de l’information et de la communication.\\
-
-Pour mieux appréhender les réalités du travail en entreprise et pour nous donner de l’autonomie dans la réalisation de projets, nous réalisons au cours de notre cursus un projet tuteuré étalé sur trois semestres.\\
-
-Dans le cadre de notre projet tuteuré, notre cheffe de département Mme ESCAZUT a permis a notre groupe exclusivement composé d’alternants la chance de travailler avec une des plus grandes entreprises d’Europe, Thales Alenia Space qui est une entreprise spatiale leader dans la conception de satellite.\\
-
-Le projet que nous a confié M. CAM, Chef du Service Missionisation \& Validation à Thales Alenia Space, consiste à la conception de la troisième version d’un robot autonome pour le compte de l’entreprise. Le robot en est actuellement à sa deuxième version et le but de notre projet est de réaliser le robot autonome version 3 en utilisant des composants « typés spatiaux » afin de permettre de réaliser des prototypes facilement et rapidement.\\
-
-Notre première partie de projet tuteuré consistait à déterminer des solutions pour l’amélioration du robot lors du second semestre. Il s’agissait entre autres de trouver une solution pour les problèmes de tension, le choix des capteurs, de la caméra à intégrer et la refonte du châssis. Au cours des semestres 3 et 4 nous avons revus et fais des modifications sur les solutions choisies au second semestre, et nous les avons mises en application pour la réalisation de la troisième version du robot.\\
-
-Pour ce faire, nous avons étudié les problèmes auxquels nous étions confrontés ainsi que les taches à réaliser et nous avons réparti le travail en sous-groupe.\\
-
-Par la suite, nous vous exposerons les différents problèmes auxquels nous avons été confrontés, les solutions qu’on a appliquées pour les résoudre et les différentes parties de la réalisation du projet en fonctions des solutions proposées pour chaque problème à traiter.\\
-
 
 \vspace*{\stretch{1}} % centrage vertical
 %==========================================INFO===================================
@@ -93,64 +75,127 @@ Par la suite, nous vous exposerons les différents problèmes auxquels nous avon
 \newp       %nouvelle page custom
 \paragraph{}
 
-\section{Mise en situation}
+\section*{Présentation générale de notre travail en projet}
+\addcontentsline{toc}{section}{Présentation générale de notre travail en projet}
+\subsection*{Enoncé du sujet et intérêt du projet}
+\addcontentsline{toc}{subsection}{Enoncé du sujet et intérêt du projet}
+Le projet tuteuré de notre groupe est en lien avec l’entreprise THALES.
+Dans le cadre de ce projet, nous avons travaillé sous la supervision de M. CAM, chef du département avionique chez THALES et Mme ESCAZUT à l’IUT.
+THALES a conçu un robot autonome (avec l'aide de différents étudiants) capable de scanner à l’aide de capteurs et de caméras son environnement pour pouvoir se déplacer en suivant des formes et/ou des couleurs spécifiques. Le robot en est actuellement à sa deuxième version. Le but du projet est donc de l'améliorer à nouveau pour produire une troisième version le robot, le rendant ainsi plus performant afin de permettre de réaliser des prototypes facilement et rapidement.\\
 
-Le projet que nous a confié Thales Alenia Space a été réparti en deux groupes différents qui étaient en compétition. Chaque groupe a travaillé sur la mise en place des solutions pour la réalisation de la troisième version du robot.\\
+Les objectifs étaient donc de:
+\begin{itemize}
+\item  Réaliser la troisième version du robot en utilisant des composants typés spatiaux
+\item  Utiliser de nouvelles batteries et ainsi délivrer une tension correcte aux différents composants
+\item  Utiliser deux Raspberry Pi pour avoir une puissance de calcul plus élevée permettant un traitement vidéo plus efficace
+\end{itemize}
 
-Ces solutions concernaient entre autres tout ce qui touchait à la tension, au rajout de nouveaux capteurs, au rajout d'un nouveau raspberry pour gérer les données que va traiter le robot et à la remodélisation du châssis. Étant donné que les équipements embarqués sur le robot ont des tensions différentes, il fallait  connaître les tensions délivrées par chacun et pouvoir alimenter le robot avec une source adéquate, tout en évitant les problèmes de surchauffe.\\
+\subsection*{Rappel du travail effectué au semestre 2}
+\addcontentsline{toc}{subsection}{Rappel du travail effectué au semestre 2}
+Lors du deuxième semestre, le projet que nous a confié THALES a été réparti en deux groupes différents qui étaient en compétition. Chaque groupe à pris connaissance de la documentation mise à disposition par M. CAM afin de mieux comprendre le projet ainsi que les tâches à réaliser. Chaque groupe a ensuite travaillé sur la mise en place des solutions pour la réalisation de la troisième version du robot.\\
 
-Le premier groupe avait proposé comme solution l’ajout d’une nouvelle batterie 32 Volts, la déclinaison de la tension électrique en 24 Volts, 12 Volts et 5 Volts, l’utilisation d’un second raspberry, le rajout d’un switch Ethernet, l'ajout de la camera TOF puis enfin d’un nouveau châssis pour accueillir le tout.\\
+Ces solutions concernaient entre autres : le problème de tension, le rajout de nouveaux capteurs, le rajout d’un nouveau Raspberry (pour gérer les données que va traiter le robot) et au nouveau modèle du châssis. Étant donné que les équipements embarqués sur le robot ont des tensions différentes, il fallait connaître les tensions délivrées par chaque équipement et ainsi l'alimenter avec une source adéquate, tout en évitant les problèmes de surchauffe. Il fallait également faire la liste des pièces pour la réalisation du robot puis faire un diagramme prévisionnel des taches pour les deux semestres à venir.\\ %les Taches ne se limitait pas  à ca Max
 
-Le deuxième groupe s’est plus penché sur les problèmes de tension entre le raspberry et l’alimentation et a proposé plusieurs solutions pour régler ce problème. Ensuite, l’utilisation de la camera ToF-Time of Flight étant donné quelle avait déjà été testé et son intégration était possible. Pour finir, il y avait également la refonte du châssis. 
+Le premier groupe a utilisé une méthode de réflexion similaire à celui de l ’ingénieur. Dans sa recherche, le groupe 1 a trouvé diverses solutions et les a présentés sous forme de tableau avec avantages / inconvénients. Cette méthode a permis donc de pouvoir laissé le choix au gérant du projet (M.Cam) de pouvoir choisir la solution la plus adéquate. Ce qui mènera en finalité comme solution l’ajout d’une nouvelle batterie 32 volts, la déclinaison de la tension électrique en 24 volts, 12 volts et 5 volts, l’utilisation d’un second Raspberry, le rajout d’un switch Ethernet, l'ajout de la caméra TOF puis enfin la modélisation d'un nouveau châssis pour accueillir le tout. Ce fût les solutions retenues.\\
 
-La solution choisie était celle du deuxième groupe, et les deux groupes se sont réunis pour travailler sur le projet pendant le semestre 3 et 4.
+Le deuxième s’est aussi quant à lui penché sur les problèmes de tension entre le Raspberry et l’alimentation et a proposé des solutions pour régler ce problème. Ensuite, ils ont travaillé sur les capteurs et ont recherchés des solutions pour l’intégration de chacun d’eux au robot. Finalement, ils ont choisi l’utilisation de la caméra ToF-Time of Flight étant donné qu'elle avait déjà été testé et que son intégration était possible. Pour finir, ils ont envisagé des solutions concernant la refonte du châssis et l’ajout d’un second Raspberry au robot.
 
-\subsection{Exposé des problèmes}
+\subsection*{Les grandes phases du travail au semestre 3 et 4}
+\addcontentsline{toc}{subsection}{Les grandes phases du travail au semestre 3 et 4}
+Les deux groupes qui étaient en compétition au deuxième semestre ont chacun eu à effectuer des prévisions sur les tâches à réaliser pour les semestres 3 et 4 sous forme de diagramme de Gantt.
 
-\subsubsection{Le problème de Tension}
-Comme énoncé lors du rapport en fin de semestre 2 le robot est constitué de capteurs qui ont besoin d’être alimentés en électricité. Mais malheureusement, le voltage des différents capteurs est différent, soit 24 volts, soit 12 volts, soit 5 volts.
+Le premier groupe avait proposé le diagramme suivant:
 
-Nous devons donc partir de l’élément primordial qui fournit l’énergie, la batterie, pour ensuite changer le voltage. Notre batterie est composée de 8 piles qui fournissent un total de 32 volts, chaque pile délivre 4 volts.
+\img{img/gantt_projet_tut.jpg}{Diagramme de Gantt du premier groupe}{0.25}
 
-Il faudra donc gérer toutes les déclinaisons de tension pour pouvoir alimenter comme il faut chacun des équipements présents sur le robot et permettre d'éviter tout ce qui est surchauffé.\\
-\\
-Plusieurs solutions avaient été proposer notamment le pont diviseur de tension qui utilise les résistances pour abaisser les tensions, le régulateur de tension qui gère automatiquement la tension de sortie en fonction de la tension d’entrée et qui est couplé avec des condensateurs pour éviter des perturbations du signal et pour finir la solution du Buck converter.
+Le deuxième groupe s’est dit que vu que le projet ne dépendait pas de l’IUT, il y avait plusieurs facteurs à prendre en compte. Une prévision des tâches serait donc dénuée de sens. Ils ont donc fait les estimations suivantes :\\
 
-\subsubsection{Le schéma 3D}
-L’un des objectifs principaux de notre projet tuteuré est de pouvoir embarquer les nouveaux équipements. Pour cela, un problème de place sur le châssis se posait. Il fallait donc l’améliorer et trouver différentes solutions pour que le robot puisse avoir des fondements solides lui permettant de réaliser ce pour quoi il avait été conçu. 
-En dehors de la refonte du châssis, plusieurs autres solutions avaient été envisagées. Il s’agissait entre autres de l’utilisation de roues ou de chenilles pour rendre le robot maniable.
+\textit{"Le début de cette deuxième année à l’IUT et donc la continuation du projet, commencera par une reprise en main des notions abordées en première année. Cela prendra environ une semaine de pouvoir se replonger dans le vif du sujet.}\\
 
-Les roues sont moins confortables au niveau de la flottaison, mais consomment moins, elles peuvent porter un peu moins de poids, mais sont idéales sur un sol plat. De plus, elles sont idéales s’il faut une vitesse plus élevée.
+\textit{Nous serons ensuite aptes à régler le problème de tension, après commande des pièces adéquates. Toutes les durées que nous allons donner sont approximative car nous ne savons pas si nous allons avoir accès au robot, et si oui, combien de temps par semaine et où (au DUT ? Chez THALES ?).
+Le temps estimé pour régler le problème de tension est très court, environ 3 semaines, il s’agit d’un simple montage électrique et d’une réflexion déjà effectuée au préalable, mais il faut avoir commandé les pièces, ce qui peut durer plus ou moins longtemps.}\\
 
-Les chenilles quant à elles offrent une flottaison inégalable, mais ont une consommation légèrement plus élevée de carburant (8\%). Les chenilles permettent une charge plus élevée, mais en revanche,le mécanisme d’entraînement des chenilles occasionne plus de résistance, de sorte quelles fournissent moins de puissance à des vitesses élevées.
+\textit{Le temps estimé pour régler le problème des capteurs dépend également de nos accès aux capteurs. Au vu de la difficulté, cela nous prendra 2 mois approximativement pour tout mettre en place. Nous devons tout d’abord faire les branchements des caméras, puis les utiliser avec leurs logiciels et enfin les relier à ROS (le système qui gère le robot). Nous pourrons enfin les scripter pour qu’ils puissent effectuer des mesures prédéfinies.}\\
 
-\subsubsection{Intégration de la caméra}
+\textit{Le problème du châssis prendra beaucoup de temps aussi car il faut se procurer un logiciel, et avoir une licence pour l’utiliser (chose qu’on peut peut-être avoir facilement en tant qu’étudiant). Puis, il faut reprendre fichier 3D du châssis déjà existant sur le logiciel et en créer un nouveau. Il faudra alors déterminer quelles sont les pièces et le câblage nécessaires, puis enfin, on pourra le faire imprimer en 3D. On peut estimer le temps à 3 mois.}\\
 
-EXPLICATION DE CE QUE c'est ET COMMENT ça MARCHE 
-%a reformuler 
-Une caméra ToF - Time of Flight (Temps de vol) utilise la lumière infrarouge (lasers invisibles aux yeux humains) pour déterminer les informations de profondeur - un peu comme la façon dont une chauve-souris perçoit son environnement. Le capteur émet un signal lumineux qui atteint le sujet et revient au capteur. Le temps nécessaire pour rebondir est ensuite mesuré et fournit des capacités de cartographie de la profondeur. Cela offre un énorme avantage par rapport aux autres technologies, car il peut mesurer avec précision les distances dans une scène complète avec une seule impulsion laser .
+\textit{En ce qui concerne les roues et les moteurs ainsi que les chenilles, il s’agit surtout de passer la commande. Mais il faudra également se renseigner si des galets de chenilles sont plus efficaces ou non.}\\
+ 
 
-Alors elle:
-Émet un signal lumineux infrarouge
-Mesure le temps nécessaire au retour du signal
-Détermine la profondeur en fonction des données extraites
+\textit{Pour les raspberrys, il nous en faudra 2 pour les monter en cluster. D’après le tutoriel, cela devrait être assez simple de les mettre en cluster. Le challenge sera l’intégration de ROS entre les 2 raspberrys. Cela prendra 2 mois.}\\
 
-La technologie de caméra à temps de vol (ToF) est apparue dans de nombreux smartphones phares  mais pour notre projet on l'utilisera d'une autre mmanière c'est à dire sur le robot.
-
-Balayage dobjets, navigation intérieure, reconnaissance gestuelle
-Aide également à limagerie 3D et à lamélioration des expériences AR
-Théoriquement, il peut mieux rendre les arrière-plans flous
-\img{./img/tof.jpg}{Caméra Time Of Flight}{0.5}
-
-Concernant le capteur caméra ToF Time Of Flight, on avait vu que l’intégration est possible, étant donné que l’étudiant qui avait réalisé la deuxième version du robot l’avait déjà faite.
+\textit{Évidemment, ce projet se soldera forcément par quelques ajustements tant au niveau du code qu’au niveau du matériel. On peut même supposer que c’est ce qui prendra le plus de temps."} \\
 
 
+Au semestre 3, les deux groupes se sont réunis pour améliorer l’ancienne version du robot et la perfectionner sur l’aspect technique et le design.
 
-On en était arriver a la conclusion que c'était la meilleur solution surtout que le caméra ToF était déjà à la disposition de M. CAM.
+Afin de mieux travailler et avancer simultanément sur les différentes parties du projet, nous avons décidé de diviser le groupe en 3 sous-groupes en fonction des problématiques à résoudre.\\
 
-Néanmoins, les questions sur le traitement des données se posaient toujours. Est-ce qu'il fallait les traiter sur les raspberrys ou sur un ordinateur après l’utilisation d’un raspberry ?   
+Les grandes tâches à réaliser étaient donc :
+\begin{itemize}
+    \item Résoudre le problème de tension
+    \item Réaliser le modèle 3D
+    \item Intégrer la caméra ToF
+    \item Intégrer ou non un second Raspberry\\
+\end{itemize}
+
+Nous avons également dû réaliser une vidéo début 2021 à l'occasion des journées portes ouvertes. Cette vidéo avait pour objectif de présenter aux futurs étudiants de l'IUT la formation en Réseaux et Télécommunications. Cette vidéo était aussi considérée comme rendu de projet en fin de semestre 3. Cette vidéo est disponible ici : \url{https://youtu.be/Xz0L6iHNSwA}\\
+
+
+Notre vidéo avait pour objectif, de valoriser la formation, mettre l'accent sur l'aspect polyvalent et professionnalisant de la formation tout en prenant comme exemple notre projet tuteuré étant donné que notre groupe était uniquement constitué d'alternant.\\
+
+Étant donné que nous venions à peine de recevoir le robot nous avons pu réaliser des plans avec afin d’expliquer son utilité puis décrire les tâches que nous aurions à effectuer pour la suite du projet.\\
+
+
+\subsection*{Les ressources humaines, logicielles et matérielles dans le projet}
+\addcontentsline{toc}{subsection}{Les ressources humaines, logicielles et matérielles dans le projet}
+Dans tous projets, le facteur de ressources humaines est un des facteurs les plus délicats à traiter.\\
+
+On peut considérer que ce facteur à un impact sur la productivité du projet, car un projet de cette envergure a besoin de personnes motivées et compétentes. En terme numérique, les ressources humaines sollicitées pour ce projet sont au nombre de 6, 6 personnes ayant chacune une tâche qui lui a été attribuée. \\
+
+En termes de ressources logicielles, le défi à relever était important. Nous ne disposions de presque aucun support ni information techniques sur le projet. Il a fallu s'adapter de diverses manières. Par exemple, au cours de notre modélisation du robot nous avons rencontré un problème causé par les licences payantes devant être utilisées pour pouvoir réaliser la modélisation de manière convenable. Nous avons donc dû réagir vite afin d'obtenir une licence étudiante pour pouvoir continuer notre travail.\\
+
+Enfin, la partie ressource matérielle est paradoxalement la ressource que nous avions dès le début en partie, mais qui à cause de diverse raison technique (COVID , délais de livraison) a été la plus compliquée à obtenir. Nous avons cependant pu pallier  ce problème grâce à la communication avec notre tuteur de projet.
+
+\subsection*{La communication avec notre tuteur de projet}
+\addcontentsline{toc}{subsection}{La communication avec notre tuteur de projet}
+
+Nous avons pendant la durée de notre projet au semestre 3 et 4 réaliser huit réunions avec M. CAM et Mme ESCAZUT. Il y avait également des échanges de mails et des réunions entre les membres du groupe.\\
+
+La première réunion consistait à faire le point sur les tâches qui avaient été réalisées au semestre 2, sur les tâches à venir et sur l’organisation du groupe pour le projet. Elle s’est tenue le \textbf{23 octobre 2020}. Au cours de cette réunion, chacun des deux groupes a présenté les solutions sur lesquelles ils avaient travaillé. M. CAM et Mme ESCAZUT ont ensuite le groupe qui avait mieux travaillé sur le projet et dont les solutions étaient meilleures. Les deux groupes se sont donc réunis pour la suite du projet.\\
+
+La réunion suivante a eu lieu le \textbf{27 novembre 2020}. Au cours de cette réunion, nous avons présenté les problèmes à résoudre, les solutions mises en place pour les résoudre et la façon dont les tâches avaient été réparties dans le groupe. Nous avons également fourni à M. CAM et Mme ESCAZUT la liste des pièces nécessaire pour démarrer et le mener à terme le projet. \\
+
+Pendant la réunion suivante, le \textbf{14 janvier 2021} nous avons enfin obtenu le robot de la part de M. CAM qui nous a fait une petite démonstration de son fonctionnement et nous a donné la documentation qui l’accompagnait pour pouvoir le faire fonctionner .\\
+
+Les autres réunions avaient pour but de faire des points d’étapes sur l’avancement du projet, sur les tâches qu’on avait eu à réaliser et sur celle qu’on avait encore à réaliser. Étant donné qu’on n’avait pas encore toutes les pièces dont on avait besoin, ont devait tout le temps réadapter nos prévisions pour la fin du projet.
+\newp
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+
+Le DUT Réseaux et Télécommunications est une formation polyvalente qui nous permet d’acquérir des compétences dans les domaines de l’informatique et des réseaux. Cette formation nous permet d’être capables de nous adapter aux besoins spécifiques des entreprises. À la fin du cursus, nous sommes donc prêts à entrer dans le monde du travail ou alors pouvoir continuer les études (par exemple, en école d’ingénieur ou en licence).
+Pour mieux appréhender les réalités du travail en entreprise et pour acquérir de l’autonomie dans la réalisation de projets, nous réalisons au cours de notre cursus un projet tuteuré étalé sur trois semestres.\\
+
+Dans le cadre de notre projet tuteuré, notre cheffe de département Mme ESCAZUT a permis à notre groupe exclusivement composé d’alternants d’avoir la chance de travailler avec une des plus grandes entreprises d’Europe, THALES.\\ 
+
+THALES est une entreprise européenne du secteur de l’industrie spatiale. Elle est basée à Toulouse et à Cannes et est leader dans la conception de satellite. Elle a été fondée en avril 2007 et emploie environ 4500 personnes à ce jour. Il s’agit d’une société par actions simplifiée à associé unique avec un chiffre d’affaires de 1 530 776 100,00 € estimé en 2019.\\
+
+%%description à améliorer MAX UN PARAGRAPHE DESUUS
+
+Le projet que nous a confié M. CAM, Chef du Service Missionisation \& Validation à THALES, consiste à modéliser et créer la troisième version d’un robot autonome. Le robot en est actuellement à sa deuxième version et le but de notre projet est de réaliser le robot autonome version 3 en utilisant des composants « typés spatiaux » afin de permettre de réaliser des prototypes facilement et rapidement.\\
+
+Notre première partie de projet tuteuré consistait à déterminer des solutions pour l’amélioration du robot lors du second semestre. Il s’agissait entre autres de trouver une solution pour les problèmes de tension, le choix des capteurs, de la caméra à intégrer et la refonte du châssis. Au cours des semestres 3 et 4, nous avons revu et fais des modifications sur les solutions choisies au second semestre, solutions que nous avons mises en application pour la réalisation de la troisième version du robot.\\
+
+Pour ce faire, nous avons étudié les problèmes auxquels nous étions confrontés ainsi que les taches à réaliser et nous avons réparti le travail en sous-groupe.\\
+
+Par la suite, nous vous exposerons les différents problèmes auxquels nous avons été confrontés, les solutions qu’on a appliquées pour les résoudre et les différentes parties de la réalisation du projet en fonctions des solutions proposées pour chaque problème à traiter.\\
 
 \newp
+
+
+\section{Exposé des problèmes}
+
 \input{thales-project/rapport-2/partie2}
 
 \newp
@@ -159,65 +204,105 @@ Néanmoins, les questions sur le traitement des données se posaient toujours. E
 
 
 \newp
-\section{Conclusion}
-
-
-Apport sur notre vie pro :
-
-
-
-
-
-Ce premier contact va nous aider à avoir une idée sur la vie professionnelle et surtout nous aider par la suite à rentrer dans ce monde et nous favoriser car il va figurer sur nos CV en tant qu’une expérience technique très importantes.
-
-Les projets tutorés vont permettre au recruteur de cibler les compétences techniques réellement mises en œuvre par le candidat, et pas simplement étudiées en cours magistral et surtout si, le travail a été fait avec une grande entreprise reconnue dans le monde de la technologie en général, de l'aérospatiale, la défense, la sécurité et le transport terrestre.
-
-De plus, le projet a été réalisé avec d’autres étudiants donc cela va donner des indications sur notre capacité à travailler en équipe. 
-
-Réaliser un projet en binôme ou à 6, ce n’est pas pareil, c’est pour ça que réaliser un tel projet reste une partie très importante dans notre vie professionnelle.
-
-
-
-Apport de ce projet dans nos compétences :
-
-
-
+\section{Fin du projet}
 
 \subsection{Version finale du projet}
+Pour la version définitive du projet, le groupe en charge de travailler sur le problème de tension a réussi à mettre en place le buck converter et a réussi à le faire fonctionner. Il fallait ensuite attendre que tous les autres groupes aient fini leur travail pour monter le robot et effectuer le branchement sur le buck converter.\\
 
-\subsection{apport de ce projet dans notre vie pro}
+\img{img/buckCR.JPG}{Test du buck converter en salle de TP}{0.4}
 
-L’Objectif principal de notre projet tuteuré est de mettre en pratique nos savoirs acquis pendant les cours, prendre en main un projet de zéro et le mené a bien avec les indications d'un tuteur ou dans notre cas une grande entreprise, THALES. 
+Le groupe de modélisation a réalisé la version imprimable du robot et a pu avoir accès à l'imprimante pour imprimer le robot pièce par pièce. Il a fallu réaliser les impressions sous plusieurs étant donné le temps que ça prenait pour imprimés un certain nombre de pièces soit 10 heures environ pour 7 pièces.
 
-La formation a l'IUT est une formation professionnalisante et polyvalente nous permettant d'être opérationnelle a la fin de notre DUT. Pour que cela soit possible nnous avons le projet tuteuré qui nous a permis de nous détacher de la théorie et des TPs préparé par les professeurs pour nous permettre de mettre en application les compétences acquise en cours et en TP. 
+\img{img/piecesRR.jpg}{Premières pièces imprimées}{0.4}
 
-Travailler pour THALES était une grande opportunité et on est reconnaissant à l'IUT de nous avoir permet de réaliser ce projet surtout pour nous en tant qu'alternant. Cela nous a permis d’avoir une relation directe avec une entreprise nous préparant lors du semestre 2 à notre alternance et de pouvoir travailler avec eux sur un même projet par la suite lors des semestres 3 e 4.
+Les étapes suivantes étaient la soudure des Raspberrys sur le robot, l'intégration des roues et des autres composants.
 
-\subsection{apport de ce projet dans nos compétences}
-certain membre ont du apprendre le \LaTeX
+\img{img/raspberrysR.jpg}{Travaux sur les Raspberrys}{0.1}
+
+\img{img/v3VSv2.jpg}{Robot v3 VS Robot v2}{0.1}
+
+\subsection{Apport de ce projet dans notre vie professionnelle}
+
+Le projet tuteuré est de mettre en pratique dans un premier temps les savoirs acquis pendant les cours, prendre en main un projet de zéro et le mener à bien avec les indications d’un tuteur.\\
+
+Notre projet nous a amenés à sortir du cadre des cours reçus à l’IUT et nous a permis non seulement de faire des recherches et d’en apprendre plus sur le fonctionnement du robot, son système d’exploitation, mais nous a permis aussi sur un plan plus général de développer des compétences plus humaines. Il s’agit notamment de l’organisation parce qu’étant alternant et très peu présent à l’IUT il fallait quand même trouver du temps pour travailler sur le projet tuteuré, les autres projets de l’IUT, réviser les cours et répondre aux exigences de nos entreprises respectives. Parmi ces compétences humaines, il y avait le travail d’équipe et la cohésion de groupe, car il a fallu s’entendre sur les tâches à réaliser, sur la manière de les réaliser et sur les bonnes directives à prendre.\\
+
+Le projet tuteuré nous a permis de nous détacher de la théorie et des TPS préparées par les professeurs pour nous permettre de mettre en application les compétences acquises en cours et en TP et d’en acquérir encore davantage. Ce faisant, nous sommes opérationnelles pour travailler en entreprise dès la fin de notre DUT.\\
+
+Travailler pour THALES était une grande opportunité et nous sommes reconnaissants envers l’IUT pour nous avoir donné la possibilité de réaliser ce projet surtout pour nous en tant qu’alternants. Cela nous a permis d’avoir une relation directe avec une entreprise nous préparant lors du semestre 2 à notre alternance et de pouvoir travailler avec eux sur un même projet par la suite lors des semestres 3 et 4.
+
+\subsection{Apport de ce projet dans nos compétences}
+
+Réaliser un projet tuteuré permet d’améliorer nos compétences techniques dans différents domaines et surtout humaines.
+La première compétence développée grâce à ce projet est le travail d’équipe, car on apprend à composer avec les méthodes de travail de chacun, à savoir se coordonner et développer sa capacité à communiquer et à gérer les conflits.\\
+
+On apprend surtout à être autonome, à prendre des décisions et des initiatives pour que le travail avance correctement.
+Lors de la réalisation de notre projet, nous avons beaucoup appris sur les méthodes de conduite d'un projet, sur le respect d'un planning ou sur comment réorganiser un planning en fonction des contraintes qui pouvait subvenir.\\
+
+De nombreuses compétences ont été acquises aussi en fonction des différentes tâches qu'on avait à réaliser.\\
+
+Le groupe chargé de travailler sur le nouveau châssis du robot n'ayant jamais auparavant fait de la modélisation 3D a pu apprendre comment concevoir de A à Z un modèle 3D, du design des pièces jusqu'a l'impression du modèle finale.\\
+
+Le groupe chargé de tester la solution qui permettrait de résoudre le problème de tension a acquis des compétences sur la recherche à savoir comment fonctionne le buck converter, ce qu'il fallait avoir et ce qu'il fallait savoir pour le mettre en place. Ils ont acquis également des compétences sur la théorie notamment sur le procédé permettant de réduire la tension en utilisant le système du buck converter. Enfin sur la pratique, ils ont réussi à faire des manipulations en salles de travaux pratiques pour faire fonctionner le buck converter.\\
+
+Le groupe chargé de travailler sur les Raspberrys et la caméra a appris comment fonctionnait le système d'exploitation ROS, comment il fallait l'implémenter sur les Raspberrys, comment mettre les Raspberrys en cluster et réussir a les faires communiqués.
+En plus de cela, il a pu voir comment avec ROS, on pouvait faire communiquer et fonctionner chaque partie du robot, comment connectés la caméra au robot et comment traités les informations qu'elle fournirait a ce dernier.\\
+
+Le groupe chargé du compte rendu étant pour chacun d'eux au coeur des activités des autres groupes a réussi à regarder comment tous les systèmes ont pu être mis en place. Comme compétence supplémentaire, ils ont appris le LaTeX pour la réalisation du rapport de projet.
+
+\subsection{Les difficultés rencontrés et les améliorations possible}
+
+Réaliser un projet de cette envergure n’a pas été simple. Plusieurs contraintes et/ou difficultés nous ont empêchés d’avancer dans le temps qui était prévu pour la réalisation de chaque tâche.\\
+
+Le groupe ayant travaillé sur le buck converter a eu des difficultés dans un premier temps pour comprendre comment il fonctionnait. Il fallait théoriquement bien cerner le buck converter avant de le manipuler pour éviter d’abimer les composants. 
+La seconde difficulté était la disponibilité des composants parce qu’il a fallu attendre un moment avant de les recevoir. Les tests n’ont pas pu débuter au moment opportun.
+Au-delà de tout ceci, il fallait trouver un créneau pour avoir accès à une salle de travaux pratiques afin de pouvoir réaliser les tests parce qu’il fallait être sur que le buck converter arriverait a délivrer le courant nécessaire au robot.\\
+
+En ce qui concerne le groupe de la modélisation, il fallait dans un premier trouver le logiciel adéquat pour réaliser le modèle 3D du nouveau robot. Il fallait un logiciel libre qui permettait de collaborer. Le groupe a donc fait des tests sur plusieurs logiciels avant de choisir fusion 360. Pour une utilisation individuelle, elle était gratuite, pour un travail d'équipe il fallait passer à une version payante, mais cela n'a pas été utile vu qu'on a pu trouver la solution d'exporter le modèle et de le partager dans un drive.
+Il fallait ensuite réussir à prendre en main le logiciel, pouvoir modéliser les composants avec les bonnes tailles et de façon indépendante afin de pouvoir les imprimer pièce par pièce. L'imprimante 3D ne pouvant pas imprimer le robot en bloc c'était la solution la plus adaptée.\\
+
+Le groupe chargé du compte rendu rendu a quant à lui dû s'organiser pour travailler de façon efficace avec les autres groupes. Vu les contraintes dues à nos emplois du temps avec l'alternance, il a fallu trouver du temps pour participer au travail et pouvoir transcrire tout ce qui a été réalisé. En plus de tout ceci, il faut rajouter l'apprentissage du LaTeX pour rédiger le rapport qui n'a pas été simple.\\
+
+Le groupe chargé de l'intégration de la caméra et du Raspberry a rencontré des difficultés dans un premier temps pour l'installation de ROS. Il existe plusieurs versions de ROS, il fallait trouver la version adéquate au robot qu'on voulait mettre en place et l'installer par la suite.
+En plus de cela, une des difficultés majeures était de compiler les différents packages mis à notre disposition.Réaliser un projet de cette envergure n’a pas été simple. Plusieurs contraintes et/ou difficultés nous ont empêchés d’avancer dans le temps qui était prévu pour la réalisation de chaque tâche.\\
+
+Le groupe ayant travaillé sur le buck converter a eu des difficultés dans un premier temps pour comprendre comment il fonctionnait. Il fallait théoriquement bien cerner le buck converter avant de le manipuler pour éviter d’abimer les composants. 
+La seconde difficulté était la disponibilité des composants parce qu’il a fallu attendre un moment avant de les recevoir. Les tests n’ont pas pu débuter au moment opportun.
+Au-delà de tout ceci, il fallait trouver un créneau pour avoir accès à une salle de travaux pratiques afin de pouvoir réaliser les tests parce qu’il fallait être sur que le buck converter arriverait a délivrer le courant nécessaire au robot.\\
+
+En ce qui concerne le groupe de la modélisation, il fallait dans un premier trouver le logiciel adéquat pour réaliser le modèle 3D du nouveau robot. Il fallait un logiciel libre qui permettait de collaborer. Le groupe a donc fait des tests sur plusieurs logiciels avant de choisir fusion 360. Pour une utilisation individuelle, elle était gratuite, pour un travail d'équipe il fallait passer à une version payante, mais cela n'a pas été utile vu qu'on a pu trouver la solution d'exporter le modèle et de le partager dans un drive.
+Il fallait ensuite réussir à prendre en main le logiciel, pouvoir modéliser les composants avec les bonnes tailles et de façon indépendante afin de pouvoir les imprimer pièce par pièce. L'imprimante 3D ne pouvant pas imprimer le robot en bloc c'était la solution la plus adaptée.\\
+
+Le groupe chargé du compte rendu rendu a quant à lui dû s'organiser pour travailler de façon efficace avec les autres groupes. Vu les contraintes dues à nos emplois du temps avec l'alternance, il a fallu trouver du temps pour participer au travail et pouvoir transcrire tout ce qui a été réalisé. En plus de tout ceci, il faut rajouter l'apprentissage du LaTeX pour rédiger le rapport qui n'a pas été simple.\\
+
+Le groupe chargé de l'intégration de la caméra et du Raspberry a rencontré des difficultés dans un premier temps pour l'installation de ROS. Il existe plusieurs versions de ROS, il fallait trouver la version adéquate au robot qu'on voulait mettre en place et l'installer par la suite.
+En plus de cela, une des difficultés majeures était de compiler les différents packages mis à notre disposition.
+
+\newp
+\section*{Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
+Ce projet nous a été bénéfique sur plusieurs points notamment sur les nouvelles compétences plus techniques que nous avons acquises comme le fonctionnement du buck converter, du système d'exploitation ROS, l'utilisation d'un modèle 3D; mais aussi de compétences et de valeurs plus humaines notamment, la gestion de notre temps, l'organisation, le travail d'équipe, le respect, mais surtout le développement de notre esprit critique.\\
+
+D'un autre côté, cela a néanmoins été assez contraignant de travailler sur un projet de cette envergure étant donné que le rythme de l'alternance ne nous laissait pas énormément de marge de manoeuvre quant à notre organisation. Le travail à l'IUT n'était plus souple compte tenu du fait qu'on était en entreprise, mais il fallait gérer la même quantité de travail qu'un étudiant traditionnel sur une durée beaucoup plus restreinte.
+De plus, nous avons été également ralentis par les pièces qu'on n’a pas pu recevoir dans les temps.\\
+
+Nous sommes cependant reconnaissants envers l'IUT et l'entreprise THALES de nous avoir permis de travailler sur ce projet parce que même si cela n'a pas été simple, ce projet nous a vraiment été avantageux.\\
+
+Il nous a permis de consolider dans un premier temps les compétences acquises lors de notre formation en DUT puis de sortir de ce cadre pour en acquérir de nouvelles nous offrant des profils encore plus polyvalents.
 
 
-Réaliser un projet tutoré permet d’améliorer nos compétences techniques dans différents domaines et surtout humaines.
-
-La première compétence développée grâce à ce projet est le travail d’équipe car on apprend à composer avec les méthodes de travail de chacun, Savoir se coordonner, Savoir prendre sa place dans un groupe (participation, écoute, respect) et Développer sa capacité à communiquer et à gérer les conflits.
-
-On apprend surtout à être autonome, savoir prendre des décisions et des initiatives collectivement et assumer ses responsabilités.
-
-Lors de la réalisation de notre projet, on a tous acquis une expérience professionnelle et apprit beaucoup d’informations sur les méthodes de conduite de projet, comment respecter un planning, savoir démarcher des professionnels et savoir gérer l’incertitude.
-
-Toutes les personnes de notre groupe ont appris de nouveaux savoirs et savoir-faire en lien avec le thème du projet, par exemple Benjamin et Yahia ont acquis des compétences dans le domaine de la modélisation 3D, Nans qui a utilisé un nouveau matériel électronique et donc il a fallu chercher des informations sur la manipulation et la configuration ce qui lui a permis de gagner des savoirs qui vont l’aider pour ces prochains projets professionnels.
-
-\newp  
+\newp
+\section*{Annexe}
+\addcontentsline{toc}{section}{Annexe}
 
 \appendix
-\section*{Annexe - Compte rendu de la réunion du 14 Novembre 2020}
-La première réunion que nous avons faite a eu lieu le 14 Novembre 2020. Elle s'est réalisée avec tout les membres de notre groupe.
+\section*{Annexe - Compte rendu de la réunion du 14 novembre 2020}
+La première réunion que nous avons faite a eu lieu le 14 novembre 2020. Elle s'est réalisée avec tous les membres de notre groupe.
 \\
 
-Juste avant cette réunion les deux groupes en charge du projet robot ont fusionnés. La première réunion à donc permis au groupe dont le projet a été retenu de faire le point au nouveau membre. 
+Juste avant cette réunion les deux groupes en charge du projet robot ont fusionné. La première réunion a donc permis au groupe dont le projet a été retenu de faire le point au nouveau membre. 
 \\
-
-Les nouveaux membres ont donc reçu le dossier de cadrage, puis ils ont dû prendre connaissance des tâches à effectuer. Les problèmes à résoudre ont été redéfini et le travail à donc été réparti en 4 groupe. Un groupe (Maxence) se charge de régler le problème de tension, un autre (Nans) se charge de trouver comment intégrer la nouvelle caméra, le troisième (Yahia et Benjamin) se charge de faire la modélisation 3D du robot et le dernier groupe (Sedjro et Jules) se charge de faire le lien entre les différents groupe pour s'assurer que le travail avance bien et également de rédigé le compte-rendu.
+Les nouveaux membres ont donc reçu le dossier de cadrage, puis ils ont dû prendre connaissance des tâches à effectuer. Les problèmes à résoudre ont été redéfinis et le travail a donc été réparti en 4 groupes. Un groupe (Maxence) se charge de régler le problème de tension, un autre (Nans) se charge de trouver comment intégrer la nouvelle caméra, le troisième (Yahia et Benjamin) se charge de faire la modélisation 3D du robot et le dernier groupe (Sedjro et Jules) se charge de faire le lien entre les différents groupes pour s'assurer que le travail avance bien et également de rédiger le compte-rendu.
 \\
 \\
 Le point à l'issue de cette réunion a été de partir sur:\\
@@ -231,65 +316,168 @@ Le point à l'issue de cette réunion a été de partir sur:\\
 
 \newp
 \section*{Annexe - Compte rendu de la réunion du 21 Novembre 2020}
-La deuxième réunion que nous avons faite a eu lieu le 21 Novembre 2020. Elle s'est réalisée avec tout les membres de notre groupe.\\
-
-Pendant cette réunion, nous avons travaillé sur une présentation du travail à réaliser avec les groupes qui ont été définis.\\
-
-Trois problèmes ont été présenté, le problème de tension, la réalisation du schéma 3D et l'intégration de la caméra.
+La deuxième réunion que nous avons faite a eu lieu le 21 novembre 2020. Elle s'est réalisée avec tous les membres de notre groupe.\\ Pendant cette réunion, nous avons travaillé sur une présentation du travail à réaliser avec les groupes qui ont été définis.\\ Trois problèmes ont été présentés, le problème de tension, la réalisation du schéma 3D et l'intégration de la caméra.
 En effet, les composants du robot ont besoin d’être alimentés avec plusieurs tensions différentes et ce problème sera traité en utilisant la solution du Buck converter.
 \\
 Ensuite, il va falloir ajouter de nouveaux éléments au robot, il faut donc revoir toute la conception du châssis.
 Les membres du groupe chargé de cette tâche vont alors s’inspirer de l’ancien visuel pour développer le nouveau, en prenant compte des contraintes physiques sur les roues, par exemple, il faudra utiliser un coefficient de sécurité.
-La solution des chenilles a donc été écarté.
+La solution des chenilles a donc été écartée.
 \\
 Pour finir, nous devons ajouter une caméra au robot, nous devons donc l’ajouter au système ROS pour pouvoir l’utiliser et en tirer des informations.
 \\
-
 Nous avons par la suite effectué un plan de mise des oeuvres des différentes tâches pour les différents groupes.
-Pour le problème de tension, la première étape était de mettre en place le circuit après réception des composants puis réaliser des tests pour les tensions et courant disponible.
+Pour le problème de tension, la première étape était de mettre en place le circuit après réception des composants puis réaliser des tests pour les tensions et courants disponibles.
 \\
 Pour la conception du schéma 3D, la première étape était de créer un nouveau modèle 3D, sur un logiciel de modélisation 3D, comme blender ou un autre logiciel imposé, ensuite l'impression du châssis et pour finir l'ajout de nouveaux éléments.
 \\
 En ce qui concerne l'ajout de la caméra, la première partie consiste à la mise en place de la configuration du robot et voir comment elle marche, ensuite faire le développement pour l'intégration de la caméra et pour finir faire les tests sur le robot.
 \\
-Pour finir nous avons fait le point sur les matériaux nécessaires pour la réalisation des différentes tâches.
+Pour finir, nous avons fait le point sur les matériaux nécessaires pour la réalisation des différentes tâches.
 
 \newp
-\section*{Annexe - Compte rendu de la réunion du 27 Novembre 2020}
-La 3ème réunion que nous avons faites a eu lieu le 27 Novembre 2020. Elle s'est réalisée avec tout les membres de notre groupe ainsi qu'avec M. CAM et Mme ESCAZUT.
+\section*{Annexe - Compte rendu de la réunion du 27 novembre 2020}
+La 3e réunion que nous avons faite a eu lieu le 27 novembre 2020. Elle s'est réalisée avec tous les membres de notre groupe ainsi qu'avec M. CAM et Mme ESCAZUT.
 
-Au cours de cette rencontre qui à eu lieu a l'IUT, nous avons présenter le travail qu'on aura à réaliser les semaine qui suivront, les problèmes du robot et les solutions pour les résoudre et l'organisation de notre groupe pour pouvoir résoudre ces problèmes.
+Au cours de cette rencontre qui a eu lieu à l'IUT, nous avons présenté le travail qu'on aura à réaliser les semaines qui suivront, les problèmes du robot et les solutions pour les résoudre et l'organisation de notre groupe pour pouvoir résoudre ces problèmes.
 \\
-
 Nous avons aussi présenté la liste des matériaux dont nous aurons besoin.
 \\
-
 M. CAM et Mme ESCAZUT nous ont demandé de faire une liste plus exhaustive des matériaux et ont fait le point sur les matériaux que l'IUT pouvait nous fournir et sur ceux que M. CAM devait nous fournir.
 
 
 \newp
-\section*{Annexe - Compte rendu de la réunion du 6 Janvier 2021}
-La 4ème réunion que nous avons faites a eu lieu le 6 Janvier 2021. Elle s'est réalisée avec tout les membres de notre groupe.
+\section*{Annexe - Compte rendu de la réunion du 6 janvier 2021}
+La 4e réunion que nous avons faite a eu lieu le 6 janvier 2021. Elle s'est réalisée avec tous les membres de notre groupe.
+Pour présenter le département R\&T et la formation aux futurs étudiants, l'université organise des journées portes ouvertes où les projets tuteurés sont mis en avant. Compte tenu de la situation sanitaire actuelle, il a fallu organiser cette journée porte ouverte virtuellement.
+On a donc été chargé de réaliser une vidéo où l'on expliquait notre projet tuteuré, en quoi il consistait, et qu'elles sont les travaux qui avaient été réalisés jusque là.
+Notre réunion a donc consisté à faire les points sur les différents thèmes à aborder et comment il fallait réaliser la vidéo; vidéo qui devait résumer le travail effectué au semestre précédent et  les différentes tâches à accomplir pour la suite.
+\newp
+\section*{Annexe - Compte rendu de la réunion du 14 janvier 2021}
+La 5e réunion que nous avons faite a eu lieu le 14 janvier 2021. Elle s'est réalisée avec tous les membres de notre groupe ainsi que M. CAM et Mme ESCAZUT.
 
-Pour présenter le département R\&T et la formation au futurs étudiants, l'université organise des journées portes ouvertes où les projets tuteurés sont mis en avant. Compte tenue de la situation sanitaire actuelle, il fallu organisé cette journée porte ouverte virtuellement.
-
-On a donc été chargé de réaliser une vidéo où l'on expliquait notre projet tuteuré, en quoi il consistait, et qu'elles sont les travaux qui avait été réalisé jusque là.
-
-Notre réunion a donc consisté à faire les points sur les différents thèmes à aborder et comment il fallait réaliser la vidéo qui devait résumé tout le travail du dernier semestre et les différentes tâches à accomplir pour la suite.
-
+Pendant cette réunion, M. CAM nous a enfin confié le robot. Il en a profité pour nous faire un test du fonctionnement du robot. Nous avons ainsi pu voir comment il marchait, quels étaient les principaux fichiers de configuration, comment fonctionnait la caméra déjà intégrée au robot puis nous a expliqué à nouveau le processus de tracking du robot.
+\\
+Il nous a également fourni une partie des pièces dont nous avions besoin pour commencer à travailler sur la version 3 du robot.
+\\
+Nous en avons profité pour faire quelques plans à rajouter à notre vidéo.
 
 \newp
-\section*{Annexe - Compte rendu de la réunion du 14 Janvier 2021}
-La 5ème réunion que nous avons faites a eu lieu le 14 Janvier 2021. Elle s'est réalisée avec tout les membres de notre groupe ainsi que M. CAM.
+\section*{Annexe - Compte rendu de la réunion du 14 février 2021}
+La 7e réunion que nous avons faite a eu lieu le 14 février 2021. Elle s'est réalisée avec tous les membres de notre groupe.
+Au cours de cette réunion, nous avons fait le point sur l'avancée du travail de chaque groupe.
+Pour le groupe du buck converter la tension marchait à 30 Volts.
+Pour la modélisation, la prise en main de fusion 360 et les premiers modèles étaient prometteur. Pour la suite, il fallait  penser à faire les schémas au  brouillon (dessin) et ensuite faire la modélisation sur Fusion360. 
+En ce qui concerne la caméra, il fallait réussir à la faire fonctionner et commencer l'installation logicielle (première phase) et ensuite dès qu'on aurait réussi à faire fonctionner la caméra, créer un programme pour utiliser les images générées par la caméra.
+Le groupe du compte rendu avant bien avancé pour la retranscription des comptes rendus de réunions, il fallait penser à bien relire pour les fautes et bien rédigé le compte rendu de chaque réunion.
+Une proposition d'idée pour mieux évoluer dans le travail a été faite:
+Programmer des séances a l'IUT pour travailler.
 
-
-Pendant cette réunion M. CAM nous a enfin confié le robot. Il en a profité pour nous faire un test du fonctionnement du robot. Nous avons ainsi pu voir comment il marchait, quels étaient les principaux fichiers de configuration, comment fonctionnait la caméra déjà intégré au robot puis nous a expliqué à nouveau le processus de tracking du robot.
+\newp
+\section*{Annexe - Compte rendu de la réunion du 05 mars 2021}
+La 8e réunion que nous avons faite a eu lieu le 5 mars 2021. Elle s'est réalisée avec tous les membres de notre groupe ainsi qu'avec M. CAM et Mme ESCAZUT.
+Au cours de cette rencontre qui a eu lieu à l'IUT, nous avons présenté le travail qu'on avait réalisé jusque là ainsi que les tâches qu'on aurait à réaliser les semaines qui suivront. 
+\\
+Au cours de cette réunion, M.CAM et Mme ESCAZUT nous ont fait la remarque qu'on n’avait pas bien avancé sur le projet et qu'il fallait qu'on s'organise pour mieux évoluer dans les tâches. 
 \\
 
-Il nous a également fourni les matériaux dont ont avons besoin pour monter le robot.
-\\
+\newp
+\section*{Annexe - Compte rendu de la réunion du 25 mars 2021}
+La 9e réunion que nous avons faite a eu lieu le 25 mars 2021. Elle s'est réalisée avec tous les membres de notre groupe ainsi qu'avec M. CAM et Mme ESCAZUT.
+Au cours de cette réunion, le groupe de modélisation a présenté notre avancement sur le châssis du robot. On avait bien avancé et M.CAM nous a fait des remarques pour améliorer la version du châssis qu'on avait réalisé. 
+Le groupe du buck converter a présenté les recherches réalisées sur la puissance du buck converter et ont présenter les différents schémas électriques qu'ils ont réalisés.
 
-Nous en avons profiter pour faire quelques plans à rajouter à notre vidéo.
+Amélioration à réaliser pour le châssis du robot:
+\begin{itemize}
+    \item Regarder pour la répartition des charges sur le modèle surtout avec la batterie
+    \item Voir la nécessité ou non de rajouter un étage supplémentaire
+    \item Re Modéliser le support de la caméra avec les mesures convenables
+\end{itemize}
+
+
+Le groupe chargé des Raspberrys et de la caméra a commencé à regarder pour le fonctionnement de ROS.
+
+\newp
+\section*{Annexe - Compte rendu de la réunion du 16 Avril 2021}
+La 10e réunion que nous avons faite a eu lieu le 16 avril 2021. La réunion s'est réalisée avec tous les membres de notre groupe ainsi qu'avec M. CAM et Mme ESCAZUT à l'exception de Yahia BEN NAOUA qui n'a pas pu être là dû a des grèves de bus.\\
+
+Le groupe de modélisation a réussi à apporter les modifications faites par M.CAM et les améliorations sur le robot.\\
+
+Les tâches qui ont été réalisés sont:
+\begin{itemize}
+    \item Re modélisation du support caméra
+    \item Re modélisation du local pour le switch
+    \item Espace pour le passage des câbles
+    \item Création de la partie Raspberry\\
+\end{itemize}
+
+La suite des modifications a effectué:
+ \begin{itemize}
+     \item Regarder l’espace pour les capteurs
+     \item Regarder si possible de placer les piles en longueur et non en hauteur
+     \item Commencer à faire la version imprimable\\
+ \end{itemize}
+ 
+ Le groupe du buck converter à commencer a regardé la tension nécessaire pour la caméra afin de l'intégrer au robot. Ils ont aussi regardé la puissance nécessaire pour alimenter les composants du robot.  Si on utilise par exemple une pile de 9V, cela va dépendre de sa capacité en mAh et de la consommation en mA de l’appareil. Ce que l’on peut dire tout de même, c’est que les piles 9V alcalines sont des piles à très faible autonomie (environ 600 mAh). \\
+ 
+En utilisant une pile 9V en lithium, il est possible d’augmenter la capacité jusqu’à 1200 mAh. La pile en lithium durera donc plus longtemps que la pile alcaline. (mais sera plus chère).
+ \\
+ 
+Le groupe des Raspberrys et de la caméra à réussi à installer les drivers nécessaire au fonctionnement de la caméra.\\
+ 
+Pour utiliser la caméra il faut entre autre:
+\begin{itemize}
+    \item Montez la caméra dans un appareil approprié, par ex. un support de caméra
+    \item Branchez une extrémité du câble GigE dans la prise RJ45 à l'arrière de la caméra et branchez l'autre extrémité dans le port Ethernet de votre ordinateur
+    \item Insérez la fiche à 12 broches du câble d'alimentation dans le connecteur à 12 broches à l'arrière de la caméra
+    \item Insérez la fiche d'alimentation CA du bloc d'alimentation dans une prise secteur
+    \item Si le voyant LED vert s'allume, ça fonctionne
+\end{itemize}
+
+\newp
+\section*{Annexe - Compte rendu de la réunion du 21 mai 2021}
+La 11e réunion que nous avons faite a eu lieu le 21 mai 2021. Elle s'est tenue avec tous les membres de notre groupe ainsi qu'avec M. CAM et Mme ESCAZUT à l'exception de Yahia BEN NAOUA qui n'a pas pu être là dû à des grèves de bus.\\
+
+Le groupe travaillant sur le châssis avait les améliorations suivantes à réaliser:
+
+\begin{itemize}
+    \item Regarder pour la répartition des charges sur le modèle surtout avec la batterie
+    \item Voir la nécessité ou non de rajouter un étage supplémentaire 
+    \item Re Modéliser le support de la caméra avec les mesures convenables\\
+\end{itemize}
+
+Le groupe à également présenter une version imprimable du châssis mais il y avait des tests à réaliser et quelques modifications à ajouter au robot à savoir:
+\begin{itemize}
+    \item Analyse des forces exercées sur le châssis
+    \item Voir compatibilité des roues avec les moteurs
+    \item Voir l'intégration du switch et des capteurs dans le nouveau modèle
+    \item Commencer l’impression
+\end{itemize}
+
+Le groupe du compte-rendu à commencer avec la mis en place d’un plan et rédaction du compte-rendu.
+Le groupe des Raspberrys et de la caméra à regarder les packages qu'il fallait installer pour ROS et à commencer à se poser la question sur le traitement des données prit par la caméra.
+
+\newp
+\section*{Annexe - Compte rendu de la réunion du 22 mai 2021}
+La 12e réunion que nous avons faite a eu lieu le 22 mai 2021. Elle s'est réalisée avec Nans WEBERT, Bejamin NEUMANN et Sedjro FLASON.\\
+
+Au cours de cette réunion nous avons fait le point sur la modélisation du robot, les parties qui restaient à modéliser, comment il fallait répartir les charges sur le châssis, comment faire la découpe du robot pour pouvoir lancer l'impression. \\
+
+On a également regardé l'avancement du compte rendu.
+
+\newp
+\section*{Annexe - Compte rendu de la réunion du 11 Juin 2021}
+La dernière réunion que nous avons faite a eu lieu le 11 juin 2021. Elle s'est réalisée avec tous les membres de notre groupe ainsi qu'avec M. CAM et Mme ESCAZUT.\\ Avec tous les membres du groupe on a regardé comment découpé le robot en différent composant afin de pouvoir l'imprimer.On a donc réussi à imprimer une partie du robot et commencer à limer les pièces pour qu'il puisse s'emboiter.
+Le groupe s'occupant du compte-rendu avait bien avancé dans la rédaction, mais il fallait recommencer certaines parties étant donné qu'on aurait dû avoir un cours sur la rédaction du projet et la présentation ce qui n'a pas été le cas. Nous avons néanmoins  fait une séance de TP pour avoir des éclaircissements à propos du compte rendu.\\
+
+Le groupe des Raspberrys et de la caméra a rencontré des problèmes pour l'installation de ROS, mais M. CAM a proposé son aide étant donnée qu'il avait déjà rencontrée ce même type de problèmes.
+
+
+
+
+
+
+
+
 
 \newp       %nouvelle page custom
 
@@ -299,7 +487,11 @@ Nous en avons profiter pour faire quelques plans à rajouter à notre vidéo.
 
 \bibliographystyle{unsrt}
 \bibliography{references}
-
+\citep{lienLogicielCamera} 
+\citep{lienRoue} 
+\citep{buck} 
+\citep{lienLogicielCamera} 
+http://wiki.ros.org/Distributions
 
 
 \end{document}

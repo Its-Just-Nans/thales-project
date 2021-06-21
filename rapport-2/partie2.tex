@@ -1,22 +1,106 @@
+\subsection{Le problème de Tension}
+
+Comme énoncé lors du rapport en fin de semestre 2 le robot est constitué de capteurs qui ont besoin d’être alimentés en électricités. Mais malheureusement, le voltage des différents capteurs sont différents, soit 24 volts, soit 12 volts, soit 5 volts.
+Nous devons donc partir de l’élément primordial qui fournit l’énergie, la batterie, pour ensuite changer le voltage. Notre batterie est composée de 8 piles qui fournissent un total de 32 volts, chaque pile délivre 4 volts.
+Il a fallu gérer toutes les déclinaisons de tension pour pouvoir alimenter comme il faut chacun des équipements présents sur le robot et permettre d'éviter tout ce qui est surchauffé.\\ \\
+
+Plusieurs solutions avaient été proposer notamment le pont diviseur de tension qui utilise les résistances pour abaisser les tensions.
+
+\img{img/PontTension2.png}{Schéma du Pont Diviseur de Tension}{0.7}
+
+Il y avait aussi la solution du régulateur de tension qui gère automatiquement la tension de sortie en fonction de la tension d’entrée et qui est couplé avec des condensateurs pour éviter des perturbations du signal.
+
+\img{img/Regul.png}{Schéma du circuit complet avec les régulateurs et les condensateurs}{0.7}
+
+Pour finir la solution du Buck converter.
+
+\img{img/buck_converter.png}{Schéma du circuit type du Buck Converter}{1.4}
+
+\subsection{Le schéma 3D}
+
+L’un des objectifs principaux de notre projet tuteuré est de pouvoir embarquer les nouveaux équipements. Pour cela, un problème de place sur le châssis se posait. Il fallait donc l’améliorer et trouver différentes solutions pour que le robot puisse avoir des fondements solides lui permettant de réaliser ce pour quoi il avait été conçu, c'est-à-dire pouvoir réaliser des prototypes facilement et rapidement.
+En dehors de la refonte du châssis, plusieurs autres solutions avaient été envisagées. Il s’agissait entre autres de l’utilisation de roues ou de chenilles pour rendre le robot maniable.
+
+\img{img/chenil1.png}{Modèle de chenille}{1.5}
+
+\img{img/roue.JPG}{Modèle de roue}{0.6}
+
+Les roues sont moins confortables au niveau de la flottaison, mais consomment moins, elles peuvent porter un peu moins de poids, mais sont idéales sur un sol plat. De plus, elles sont idéales s’il faut une vitesse plus élevée.\\
+
+Les chenilles quant à elles offrent une flottaison inégalable, mais ont une consommation légèrement plus élevée de carburant (8\%). Les chenilles permettent une charge plus élevée, mais en revanche,le mécanisme d’entraînement des chenilles occasionne plus de résistance, de sorte qu’elles fournissent moins de puissance à des vitesses élevées.
+
+\subsection{Intégration de la caméra}
+ 
+Une caméra ToF - Time of Flight encore appelé caméra Temps de vol  est une caméra qui permet en plus de capturée des images d'avoir une information de profondeurs pour chaque pixel des images qui ont été capturées. \\
+
+\img{./img/tof.jpg}{Caméra Time Of Flight}{0.5}
+
+Pour évaluer une distance, la caméra envoie une impulsion de lumière proche de l’infrarouge à l’aide de plusieurs LEDs autour de l’objectif. Ce système est un peu basé sur la façon dont une chauve souris perçoit son environnement. Cette impulsion émise atteint son sujet et revient au capteur. Le capteur vient calculer par la suite le temps mis par l’impulsion à revenir jusqu’aux capteurs fournissant ainsi des données cartographiques de la profondeur. Cette mesure de temps de vol est effectuée indépendamment pour chaque pixel de la caméra, permettant ainsi d’obtenir une image complète en 3D de la scène filmée.\\
+
+\img{./img/infrarougeC.jpg}{Fonctionnement de la lumière infrarouge}{0.5}
+
+Pour avoir une mesure précise d’un objet, il faut qu’un seul rayon lumineux revienne sur l’objectif. Dans le cas contraire, la caméra va mal interpréter le signal reçu et perdre en précision. 
+Il faut également éviter les miroirs ou les objets trop réfléchissants, car ils dévient la quasi-totalité de l’impulsion envoyée par la caméra et elle ne reçoit donc plus le signal en retour permettant de détecter l’objet en question.\\
+
+
+La caméra ToF offre un énorme avantage par rapport aux autres technologies, car elle permet d'effectuer la  mesure avec précision des distances dans une scène complète avec une unique impulsion laser.\\
+
+Pour résumer, la caméra ToF:
+\begin{itemize}
+    \item Émet un signal lumineux infrarouge
+    \item Mesure le temps d'aller-retour du signal
+    \item Détermine la profondeur en fonction des données extraites\\
+\end{itemize}
+
+La caméra communique par Ethernet grâce au protocole GigE Vision, un protocole homogène basé sur UDP/IP.
+La technologie de caméra à temps de vol (ToF) à plusieurs utilisations. On peut s'en servir dans des smartphones par exemple. Pour notre projet, on l'utilisera pour effectuer des captures d'images et de vidéo sur le robot. Il est utilisé entre autres pour le balayage d'objets, la navigation intérieure, la reconnaissance gestuelle l'imagerie 3D et l'amélioration des expériences de réalité augmentée.\\
+
+La caméra fournit 3 images différentes des scènes qui sont filmées, chaque image est codée avec des pixels de 16 bits en nuances de gris.
+Nous avons donc une image qui montre la luminosité reçue par chaque pixel suite à l’impulsion. Plus un objet est proche, plus les pixels qui le composent sont clairs.
+Ensuite une image qui montre la fiabilité de la mesure pour chaque pixel. Plus un pixel est clair, plus sa mesure est fiable.
+Pour finir une image qui représente la distance de chaque pixel par rapport à l’objectif. Plus un pixel est clair, plus il est proche de l'objectif de la caméra.\\
+À partir de ces 3 images, la caméra crée automatiquement un nuage de points en 3D avec pour chaque pixel leurs coordonnées XYZ dans l’espace en millimètres.
+La conversion de la valeur d’un pixel  se fait par calcul en connaissant les réglages de distance minimum et maximum de la caméra.
+Pour intégrer la caméra avec ROS, le package qui a été utilisé est basler\_tof utilisant la librairie GenTL pour communiquer avec la caméra.\\
+
+\img{./img/ezR.jpg}{Images capturées avec la caméra ToF}{0.5}
+
+Il est possible d’envoyer des fichiers ou des commandes au Raspberry depuis un autre ordinateur sur le même réseau, cela évite de devoir brancher d'autres périphériques comme un clavier , une souris et un écran pour chaque manipulation laissant le robot libre de se déplacer sans câbles derrière lui. Pour cela, on utilise le protocole SSH qui sécurise une connexion entre deux périphériques pour l’échange de commandes. Il existe différents logiciels de client SSH en fonction du système d’exploitation utilisé ainsi que des fonctionnalités souhaitées.\\
+
+Concernant le capteur caméra ToF Time Of Flight, on avait vu que l’intégration est possible, étant donné que l’étudiant qui avait réalisé la deuxième version du robot l’avait déjà faite.
+On en était arrivé à la conclusion que c'était la meilleure solution surtout que la caméra ToF était déjà à la disposition de M. CAM.
+Néanmoins, les questions sur le traitement des données se posaient toujours. Est-ce qu'il fallait les traiter sur les Raspberrys ou sur un ordinateur après l’utilisation d’un Raspberry ?  
+
 \subsection{Prévision des tâches}
 
+\img{./img/prevision1.JPG}{Diagramme de Grantt des tâches du S3 et du S4}{0.4}
 
-Insérer image de grann
-dire que tout c'eest pas passé comme prévu
+Les prévisions qu’on avait faites au début du semestre 3 ont connu de nombreux changements au retard du matériel qu’on aura dû recevoir. 
+Les tests pour le buck converter ont pu être réalisés en partis, mais il a fallu les mettre sur pause étant donné qu’on avait besoin de la caméra pour pouvoir effectuer la suite.\\
+L’intégration de la caméra n’a donc pas pu débuter au moment opportun. Les tâches effectuées en attendant sa disponibilité étaient la prise en main du robot après la démonstration de M. CAM.
+Il a fallu ensuite comprendre le fonctionnement de ROS, comment il fallait l’installer puis comprendre les packages qu’il faudrait utiliser ainsi que le code produit par l’alternant ayant travaillé avec M. CAM.\\
+Le groupe chargé de la refonte du châssis a pu commencer à regarder quels logiciels étaient mieux adaptés pour réaliser la modélisation. Après avoir testé et travaillé sur plusieurs logiciels le choix c’est porté sur Fusion 360 et le groupe a commencé à le prendre en main.\\
 
-ecpliquer le cable qui est parti en islande
+Étant donné que le câble qu’on aurait dû utilisé pour connecter le robot était parti en Islande à cause d’un souci logistique, nous n’avons reçu la caméra qu’en mars ce qui nous a ralentis dans la bonne exécution du diagramme de Gantt qu’on avait réalisé.\\
 
+Dès sa réception, le groupe de modélisation a réussi à prendre les mesures de la caméra pour pouvoir retravailler sur le support de caméra et poursuivre les autres tâches à savoir apporter les modifications effectuées par M. CAM et Mme ESCAZUT lors de la précédente réunion ainsi que l'étude des forces supportées par le châssis.\\ 
 
-le retard de la caméra
+Après s’être concentré sur le fonctionnement de ROS et sur le code de l’alternant avec lequel avait travaillé M.CAM, le groupe responsable de l’intégration de la caméra a réussi à la faire fonctionner en réalisant quelques prises de vue.\\
 
-
+Il nous manquait quand même quelques pièces pour avancer dans la modélisation et dans les autres tâches comme le support pour les piles, les roues et le moteur pour le robot. Nous avons pu récupérer des supports des piles au secrétariat de l’IUT le 4 juin et les roues le 11 juin lors de la dernière réunion avec M. CAM et Mme ESCAZUT. 
+\img{./img/grantT.jpg}{Diagramme de Grantt des tâches du S3 et du S4 2.0}{0.4}
 
 \section{Recherche de solutions}
 
 \subsection{Recherche en groupe}
 
 
-expliqué les deux premiers semestre, qu'on était en concurence, les solutions des deux groupes etc...
+Deux groupes étaient en charge du projet lors du deuxième semestre. Ces deux groupes étaient en compétition. L'objectif était, pour chacun des deux groupes, de trouver des solutions pour améliorer le robot afin qu'au début du troisième semestre, M.CAM et Mme ESCAZUT choisissent les meilleures solutions.\\
+
+Les solutions qui ont finalement étaient retenue étaient celles proposés par le groupe composé de Maxence CHARLOT, Jules SOUBEYRAS et Nans WEBERT. Le second groupe composée de Sedjro FLASON, Benjamin NEUMANN ainsi que Yahia BEN NAOUA ont donc rejoins le groupe avec les solutions les plus intéressantes pour travailler à 6 sur le projet.\\
+
+Le groupe a donc revu ensemble l'ensemble des problèmes à résoudre sur le robot, réfléchis sur les solutions à mettre en place pour les résoudre, évaluer le temps nécessaire pour la mise en oeuvre du projet et fait la liste des matériaux nécessaires pour réaliser le projet.
+
 
 \subsection{Solutions retenus}
 
@@ -31,8 +115,16 @@ Cette solution a donc pour avantage de n’émettre presque pas de chaleur grâc
 L’une des solutions retenues à la fin du semestre 2  était les chenilles pour des raisons de maniabilité. 
 Néanmoins au début du semestre 3 M.CAM a décidé qu’on partirait plutôt sur des roues, mais des roues adaptées au terrain que devrait emprunter le robot.
 
-On est également parti sur une remodélisation totale du châssis en prenant en compte les nouveaux équipements qu’il doit embarquer. Il s’agit donc de deux raspberrys, d’un switch, d’un support pour la caméra ToF, de l’alimentation et du moteur. 
+On est également parti sur une nouvelle modélisation totale du châssis en prenant en compte les nouveaux équipements qu’il doit embarquer. Il s’agit donc de deux Raspberrys, d’un switch, d’un support pour la caméra ToF, de l’alimentation et du moteur. 
 
 \subsubsection{Intégration de la caméra}
 
-dire qu'il fallait intégrer la caméra qsdfdsqfsqfsdqfqsdfqsdf
+M.CAM avait comme souhait que le robot soit stable le plus longtemps possible. L'ancien étudiant avait travaillait sur ce projet avec une distribution de ROS nommée Kinetic qui avait son EOL (end-of-life) en avril 2021. M.CAM nous a donc demandé de prendre la distribution la plus récente de ROS afin de pouvoir travaillé dans le temps sur ce projet sans éventuels soucis.
+
+Cette dernière distribution est ROS Noetic Ninjemys. C'est une version LTS (long-time-support). Ce qui veut dire que cette version est faite pour avoir une durée de vie plus longue que la normale.\\
+
+\img{./img/ROS_Version_distro.png}{Liste des distributions de ROS actuelle avec leur date de parution, leur logo et leur date de fin de vie}{0.6}
+
+Le fait qu'ai utilisé la toute dernière distribution de ROS permettras aux personnes voulant reprendre le robot de pouvoir utiliser exactement les mêmes lignes de code que nous. Cette distribution a une EOL (end-of-life) prévue pour mai 2025. Après cette date il faudra probablement utiliser une nouvelle distribution car celle-ci sera obsolète. Notre code ne sera donc plus utilisable de la même manière que nous l'avons fait.
+
+
