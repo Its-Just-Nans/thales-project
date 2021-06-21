@@ -1,37 +1,37 @@
 \subsection{Le problème de Tension}
 
-Comme énoncé lors du rapport en fin de semestre 2 le robot est constitué de capteurs qui ont besoin d’être alimentés en électricités. Mais malheureusement, le voltage des différents capteurs sont différents, soit 24 volts, soit 12 volts, soit 5 volts.
+Comme énoncé lors du rapport en fin de semestre 2, le robot est constitué de capteurs qui ont besoin d’être alimentés en électricité. Mais malheureusement, le voltage des différents capteurs sont différents, soit 24 volts, soit 12 volts, soit 5 volts.
 Nous devons donc partir de l’élément primordial qui fournit l’énergie, la batterie, pour ensuite changer le voltage. Notre batterie est composée de 8 piles qui fournissent un total de 32 volts, chaque pile délivre 4 volts.
-Il a fallu gérer toutes les déclinaisons de tension pour pouvoir alimenter comme il faut chacun des équipements présents sur le robot et permettre d'éviter tout ce qui est surchauffé.\\ \\
+Il a fallu gérer toutes les déclinaisons de tension pour pouvoir alimenter comme il faut chacun des équipements présents sur le robot et ainsi permettre d'éviter une surchauffe.\\
 
-Plusieurs solutions avaient été proposer notamment le pont diviseur de tension qui utilise les résistances pour abaisser les tensions.
+Plusieurs solutions avaient été proposées, notamment le pont diviseur de tension qui utilise les résistances pour abaisser les tensions.
 
 \img{img/PontTension2.png}{Schéma du Pont Diviseur de Tension}{0.7}
 
-Il y avait aussi la solution du régulateur de tension qui gère automatiquement la tension de sortie en fonction de la tension d’entrée et qui est couplé avec des condensateurs pour éviter des perturbations du signal.
+Il y avait également la solution du régulateur de tension qui gère automatiquement la tension de sortie en fonction de la tension d’entrée. Il est couplé avec des condensateurs ce qui permet d'éviter les perturbations du signal.
 
 \img{img/Regul.png}{Schéma du circuit complet avec les régulateurs et les condensateurs}{0.7}
 
-Pour finir la solution du Buck converter.
+Pour finir la solution du Buck Converter, qui permet également de baisser le courant, mais de manière plus efficace. 
 
 \img{img/buck_converter.png}{Schéma du circuit type du Buck Converter}{1.4}
 
 \subsection{Le schéma 3D}
 
-L’un des objectifs principaux de notre projet tuteuré est de pouvoir embarquer les nouveaux équipements. Pour cela, un problème de place sur le châssis se posait. Il fallait donc l’améliorer et trouver différentes solutions pour que le robot puisse avoir des fondements solides lui permettant de réaliser ce pour quoi il avait été conçu, c'est-à-dire pouvoir réaliser des prototypes facilement et rapidement.
+L’un des objectifs principaux de notre projet tuteuré est de pouvoir embarquer les nouveaux équipements. Cela pose donc un problème de place sur le châssis. Il fallait donc l’améliorer et trouver différentes solutions pour que le robot puisse avoir des bases solides lui permettant ainsi de réaliser des prototypes facilement et rapidement.
 En dehors de la refonte du châssis, plusieurs autres solutions avaient été envisagées. Il s’agissait entre autres de l’utilisation de roues ou de chenilles pour rendre le robot maniable.
 
 \img{img/chenil1.png}{Modèle de chenille}{1.5}
 
 \img{img/roue.JPG}{Modèle de roue}{0.6}
 
-Les roues sont moins confortables au niveau de la flottaison, mais consomment moins, elles peuvent porter un peu moins de poids, mais sont idéales sur un sol plat. De plus, elles sont idéales s’il faut une vitesse plus élevée.\\
+Les roues sont moins confortables au niveau de la flottaison (le mouvement du robot sur un sol non-plat) mais sont idéales sur un sol plat. Elles peuvent porter un peu moins de poids, mais elles consomment moins. De plus, elles sont idéales s’il faut une vitesse plus élevée.\\
 
 Les chenilles quant à elles offrent une flottaison inégalable, mais ont une consommation légèrement plus élevée de carburant (8\%). Les chenilles permettent une charge plus élevée, mais en revanche,le mécanisme d’entraînement des chenilles occasionne plus de résistance, de sorte qu’elles fournissent moins de puissance à des vitesses élevées.
 
 \subsection{Intégration de la caméra}
  
-Une caméra ToF - Time of Flight encore appelé caméra Temps de vol  est une caméra qui permet en plus de capturée des images d'avoir une information de profondeurs pour chaque pixel des images qui ont été capturées. \\
+Une caméra ToF - Time of Flight encore appelé caméra Temps de vol est une caméra qui permet en plus de capturer des images, d'avoir une information de profondeurs pour chaque pixel des images qui ont été capturées (grâce à la mesure de la lumière).\\
 
 \img{./img/tof.jpg}{Caméra Time Of Flight}{0.5}
 
@@ -75,7 +75,7 @@ Néanmoins, les questions sur le traitement des données se posaient toujours. E
 
 \img{./img/prevision1.JPG}{Diagramme de Grantt des tâches du S3 et du S4}{0.4}
 
-Les prévisions qu’on avait faites au début du semestre 3 ont connu de nombreux changements au retard du matériel qu’on aura dû recevoir. 
+Les prévisions qu’on avait faites au début du semestre 3 ont connu de nombreux changements à cause au retard du matériel qu’on aurait dû recevoir. 
 Les tests pour le buck converter ont pu être réalisés en partis, mais il a fallu les mettre sur pause étant donné qu’on avait besoin de la caméra pour pouvoir effectuer la suite.\\
 L’intégration de la caméra n’a donc pas pu débuter au moment opportun. Les tâches effectuées en attendant sa disponibilité étaient la prise en main du robot après la démonstration de M. CAM.
 Il a fallu ensuite comprendre le fonctionnement de ROS, comment il fallait l’installer puis comprendre les packages qu’il faudrait utiliser ainsi que le code produit par l’alternant ayant travaillé avec M. CAM.\\
@@ -113,18 +113,16 @@ Cette solution a donc pour avantage de n’émettre presque pas de chaleur grâc
 \subsubsection{Le schéma 3D}
 
 L’une des solutions retenues à la fin du semestre 2  était les chenilles pour des raisons de maniabilité. 
-Néanmoins au début du semestre 3 M.CAM a décidé qu’on partirait plutôt sur des roues, mais des roues adaptées au terrain que devrait emprunter le robot.
+Néanmoins au début du semestre 3 M.CAM a décidé qu’on utiliserais plutôt sur des roues, mais des roues adaptées au terrain que devrait emprunter le robot.
 
-On est également parti sur une nouvelle modélisation totale du châssis en prenant en compte les nouveaux équipements qu’il doit embarquer. Il s’agit donc de deux Raspberrys, d’un switch, d’un support pour la caméra ToF, de l’alimentation et du moteur. 
+On est également parti sur une nouvelle modélisation totale du châssis en prenant en compte les nouveaux équipements qu’il doit embarquer. Il s’agit donc de deux Raspberrys, d’un switch, d’un support pour la caméra ToF, de l’alimentation et du moteur.
 
 \subsubsection{Intégration de la caméra}
 
-M.CAM avait comme souhait que le robot soit stable le plus longtemps possible. L'ancien étudiant avait travaillait sur ce projet avec une distribution de ROS nommée Kinetic qui avait son EOL (end-of-life) en avril 2021. M.CAM nous a donc demandé de prendre la distribution la plus récente de ROS afin de pouvoir travaillé dans le temps sur ce projet sans éventuels soucis.
+M.CAM avait comme souhait que le robot soit stable le plus longtemps possible. L'ancien étudiant avait travaillait sur ce projet avec une distribution de ROS nommée Kinetic qui avait son EOL (End-Of-Life) en avril 2021. M.CAM nous a donc demandé de prendre la distribution la plus récente de ROS afin de pouvoir travaillé dans le temps sur ce projet sans éventuels soucis.
 
-Cette dernière distribution est ROS Noetic Ninjemys. C'est une version LTS (long-time-support). Ce qui veut dire que cette version est faite pour avoir une durée de vie plus longue que la normale.\\
+Cette dernière distribution est ROS Noetic Ninjemys. C'est une version LTS (Long-Term-Support). Ce qui veut dire que cette version est faite pour avoir une durée de vie plus longue que la normale.\\
 
 \img{./img/ROS_Version_distro.png}{Liste des distributions de ROS actuelle avec leur date de parution, leur logo et leur date de fin de vie}{0.6}
 
-Le fait qu'ai utilisé la toute dernière distribution de ROS permettras aux personnes voulant reprendre le robot de pouvoir utiliser exactement les mêmes lignes de code que nous. Cette distribution a une EOL (end-of-life) prévue pour mai 2025. Après cette date il faudra probablement utiliser une nouvelle distribution car celle-ci sera obsolète. Notre code ne sera donc plus utilisable de la même manière que nous l'avons fait.
-
-
+Le fait qu'on ai utilisé la toute dernière distribution de ROS permettra aux personnes voulant reprendre le robot de pouvoir utiliser exactement les mêmes lignes de code que nous. Cette distribution a une EOL (end-of-life) prévue pour mai 2025. Après cette date il faudra probablement utiliser une nouvelle distribution (peut-être ROS 2) car celle-ci sera obsolète. Notre code ne sera donc plus utilisable de la même manière que nous l'avons fait.
