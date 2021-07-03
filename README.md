@@ -1,6 +1,6 @@
 # thales-project
 
-![Robot](./img/robot.jpg)
+![Robot](./imgs/robot.jpg)
 
 ## Contexte
 
